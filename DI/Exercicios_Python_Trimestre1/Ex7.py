@@ -7,4 +7,7 @@ while len(palabra) <= 9:
 tresPrimeiras = palabra[:3]
 tresUltimas = palabra[-3:]
 
-print(f"Primeiras tres letras:{tresPrimeiras}. Tres ultimas letras: {tresUltimas}")
+print(f"""Primeiras tres letras:{tresPrimeiras}. 
+Tres ultimas letras: {tresUltimas}. 
+Cuarta: {palabra[4]}. 
+Septima {palabra[7]}.""")
