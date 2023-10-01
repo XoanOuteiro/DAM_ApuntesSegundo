@@ -24,15 +24,14 @@ public class Trabajador {
     //Constructors
     /**
      *
+     * Creates an instance of this class if and only if categoria and antiguedad
+     * are within the [0,2] range of whole values.
+     * 
      * @param nombre string value to represent name
      * @param edad integer value to represent age
      * @param categoria has to be [0,2]
      * @param antiguedad has to be [0,2]
      * @throws IllegalArgumentException
-     *
-     * Creates an instance of this class if and only if categoria and antiguedad
-     * are within the [0,2] range of whole values.
-     *
      */
     public Trabajador(String nombre, int edad, int categoria, int antiguedad) throws IllegalArgumentException {
 
@@ -106,9 +105,10 @@ public class Trabajador {
     //Public methods
     /**
      * 
+     * Calculates a double price value based on this classes static contants
+     * 
      * @return double The ammount of money to be payed to the caller instance
      * 
-     * Calculates a double price value based on this classes static contants
      */
     public double calcularSueldo() {
         double sueldoBase = 607;
