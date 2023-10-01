@@ -16,6 +16,12 @@ public class ControlFechas {
     PersonaFechas pers2;
 
     //Initialization methods
+    /**
+     * 
+     * Creates two user prompted users, then prints which one
+     * is the youngest and their exact age as of current system date
+     * 
+     */
     public ControlFechas() {
 
         this.inputProtocol();
