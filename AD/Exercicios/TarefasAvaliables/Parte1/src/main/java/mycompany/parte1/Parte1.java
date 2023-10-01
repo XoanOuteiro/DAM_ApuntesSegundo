@@ -47,6 +47,7 @@ public class Parte1 {
         //----------------------------------------------------------------------
         
         //TAREFA 4: CONTROL DE FECHAS
+        ControlFechas control = new ControlFechas();
         
         
         //----------------------------------------------------------------------
