@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvHola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hola"
+        android:textSize="35sp"
+        android:background="#60DDDA"/>
+
+    <TextView
+        android:layout_below="@id/tvHola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adios"
+        android:textSize="35sp"
+        android:background="#F19633"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:id="@+id/tvHastaLuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hasta Luego"
+        android:textSize="35sp"
+        android:background="#60DDDA"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_below="@id/tvHastaLuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adios"
+        android:textSize="35sp"
+        android:background="#91DF74"
+        android:layout_alignLeft="@id/tvHastaLuego"
+        />
+
+</RelativeLayout>
