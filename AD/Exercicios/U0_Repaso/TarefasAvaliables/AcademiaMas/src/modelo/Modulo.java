@@ -12,6 +12,15 @@ public class Modulo {
     private int horas;
     private int unidades;
     
+    //Builder methods
+    public Modulo(String nombre, int horas, int unidades){
+        
+        this.nombre = nombre;
+        this.horas = horas;
+        this.unidades = unidades;
+        
+    }
+    
     //Getters & Setters
     public String getNombre() {
         return nombre;
