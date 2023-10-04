@@ -32,11 +32,22 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         txtfLocalidad = new javax.swing.JTextField();
         lblModulos = new javax.swing.JLabel();
         cbbModulos = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtaModulos = new javax.swing.JTextArea();
         btnGrabar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnQuitar = new javax.swing.JButton();
+        jscrListContainer = new javax.swing.JScrollPane();
+        jlstModulos = new javax.swing.JList<>();
+        jdlgBuscarAlumnos = new javax.swing.JDialog();
+        lblNombreABuscar = new javax.swing.JLabel();
+        txtfNombreABuscar = new javax.swing.JTextField();
+        btnMostrar = new javax.swing.JButton();
+        pnlContainerDatosAlumno = new javax.swing.JPanel();
+        lblVerNombre = new javax.swing.JLabel();
+        lblVerLocalidad = new javax.swing.JLabel();
+        lblHoras = new javax.swing.JLabel();
+        lblVerModulos = new javax.swing.JLabel();
+        jscrlpContainerDatosModulos = new javax.swing.JScrollPane();
+        jlstModulosDatos = new javax.swing.JList<>();
         pnlButtonHold = new javax.swing.JPanel();
         btnAddAlumno = new javax.swing.JButton();
         btnAddModulo = new javax.swing.JButton();
@@ -86,15 +97,13 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
         lblModulos.setText("Módulos:");
 
-        txtaModulos.setColumns(20);
-        txtaModulos.setRows(5);
-        jScrollPane1.setViewportView(txtaModulos);
-
         btnGrabar.setText("Grabar");
 
         btnLimpiar.setText("Limpiar");
 
         btnQuitar.setText("Quitar");
+
+        jscrListContainer.setViewportView(jlstModulos);
 
         javax.swing.GroupLayout jdlgAltaAlumnosLayout = new javax.swing.GroupLayout(jdlgAltaAlumnos.getContentPane());
         jdlgAltaAlumnos.getContentPane().setLayout(jdlgAltaAlumnosLayout);
@@ -103,7 +112,6 @@ public class AcademiaMasUI extends javax.swing.JFrame {
             .addGroup(jdlgAltaAlumnosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jdlgAltaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                     .addComponent(lblAltaAlumnos, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlAltaAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jdlgAltaAlumnosLayout.createSequentialGroup()
@@ -111,14 +119,15 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                         .addGroup(jdlgAltaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jdlgAltaAlumnosLayout.createSequentialGroup()
                                 .addComponent(lblModulos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(59, 59, 59)
                                 .addComponent(cbbModulos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jdlgAltaAlumnosLayout.createSequentialGroup()
                                 .addComponent(btnGrabar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                                 .addComponent(btnLimpiar)
-                                .addGap(10, 10, 10)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(10, 10, 10))))
+                    .addComponent(jscrListContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addComponent(btnQuitar)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -135,13 +144,94 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                     .addComponent(cbbModulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jdlgAltaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuitar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnQuitar)
+                    .addComponent(jscrListContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jdlgAltaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGrabar)
                     .addComponent(btnLimpiar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        lblNombreABuscar.setText("Nombre a buscar:");
+
+        btnMostrar.setText("Mostrar");
+
+        pnlContainerDatosAlumno.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del alumno"));
+
+        lblVerNombre.setText("Nombre:");
+
+        lblVerLocalidad.setText("Localidad:");
+
+        lblHoras.setText("Horas:");
+
+        javax.swing.GroupLayout pnlContainerDatosAlumnoLayout = new javax.swing.GroupLayout(pnlContainerDatosAlumno);
+        pnlContainerDatosAlumno.setLayout(pnlContainerDatosAlumnoLayout);
+        pnlContainerDatosAlumnoLayout.setHorizontalGroup(
+            pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblVerNombre)
+                    .addComponent(lblVerLocalidad)
+                    .addComponent(lblHoras))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlContainerDatosAlumnoLayout.setVerticalGroup(
+            pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblVerNombre)
+                .addGap(26, 26, 26)
+                .addComponent(lblVerLocalidad)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(lblHoras)
+                .addGap(18, 18, 18))
+        );
+
+        lblVerModulos.setText("Módulos:");
+
+        jscrlpContainerDatosModulos.setViewportView(jlstModulosDatos);
+
+        javax.swing.GroupLayout jdlgBuscarAlumnosLayout = new javax.swing.GroupLayout(jdlgBuscarAlumnos.getContentPane());
+        jdlgBuscarAlumnos.getContentPane().setLayout(jdlgBuscarAlumnosLayout);
+        jdlgBuscarAlumnosLayout.setHorizontalGroup(
+            jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
+                        .addComponent(lblVerModulos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jscrlpContainerDatosModulos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(pnlContainerDatosAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdlgBuscarAlumnosLayout.createSequentialGroup()
+                        .addComponent(lblNombreABuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtfNombreABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jdlgBuscarAlumnosLayout.setVerticalGroup(
+            jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtfNombreABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMostrar))
+                    .addComponent(lblNombreABuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlContainerDatosAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblVerModulos))
+                    .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jscrlpContainerDatosModulos, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -244,22 +334,33 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAddModulo;
     private javax.swing.JButton btnGrabar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnQuitar;
     private javax.swing.JButton btnSeeAlumno;
     private javax.swing.JComboBox<String> cbbModulos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JDialog jdlgAltaAlumnos;
+    private javax.swing.JDialog jdlgBuscarAlumnos;
+    private javax.swing.JList<String> jlstModulos;
+    private javax.swing.JList<String> jlstModulosDatos;
+    private javax.swing.JScrollPane jscrListContainer;
+    private javax.swing.JScrollPane jscrlpContainerDatosModulos;
     private javax.swing.JLabel lblAltaAlumnos;
+    private javax.swing.JLabel lblHoras;
     private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblModulos;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreABuscar;
+    private javax.swing.JLabel lblVerLocalidad;
+    private javax.swing.JLabel lblVerModulos;
+    private javax.swing.JLabel lblVerNombre;
     private javax.swing.JMenuBar menuMainWindow;
     private javax.swing.JPanel pnlAltaAlumno;
     private javax.swing.JPanel pnlButtonHold;
-    private javax.swing.JTextArea txtaModulos;
+    private javax.swing.JPanel pnlContainerDatosAlumno;
     private javax.swing.JTextField txtfLocalidad;
     private javax.swing.JTextField txtfNombre;
+    private javax.swing.JTextField txtfNombreABuscar;
     // End of variables declaration//GEN-END:variables
 }
