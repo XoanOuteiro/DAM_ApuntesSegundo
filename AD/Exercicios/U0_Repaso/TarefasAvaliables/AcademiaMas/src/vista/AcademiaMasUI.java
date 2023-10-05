@@ -1,17 +1,47 @@
 
 package vista;
 
+import java.util.ArrayList;
+import modelo.Alumno;
+import modelo.Modulo;
+
 /**
  *
  * @author XoanOuteiro
  */
 public class AcademiaMasUI extends javax.swing.JFrame {
+    
+    /*
+        
+        The code that follows is as faithful as possible to the
+        provided development guidelines, however, all methods related to 
+        external JDialog classes are also in the following lines (instead of their
+        own classes) for simplicitys sake. This means JDialog summoning is done 
+        assuming that the JDialogs are atributes of this class (which they are)
+        via the .showVisible(true) method
+    
+        For this adaptation some instance atributes needed to be converted
+        into method-variabes or are direct references to the target object
+        atributes
+    
+        As it has been mentioned here already, i will not be pin-pointing each
+        and every change when it appears in the code
+    
+    */
+    
+    //Class Atributes
+    private ArrayList<Alumno> listaAlumnos;
+    private ArrayList<Modulo> listaModulos;
 
     /**
      * Creates new form AcademiaMasUI
      */
     public AcademiaMasUI() {
         initComponents();
+        
+        this.listaAlumnos = new ArrayList();
+        this.listaModulos = new ArrayList();
+        
     }
 
     /**
@@ -68,7 +98,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         btnSeeAlumno = new javax.swing.JButton();
         menuMainWindow = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        miCargarAlumnos = new javax.swing.JMenuItem();
+        miSalvarAlumnos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        miCargarModulos = new javax.swing.JMenuItem();
+        miSalvarModulos = new javax.swing.JMenuItem();
 
         jdlgAltaAlumnos.setResizable(false);
 
@@ -413,9 +447,28 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Alumnos");
+
+        miCargarAlumnos.setText("Cargar");
+        miCargarAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCargarAlumnosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miCargarAlumnos);
+
+        miSalvarAlumnos.setText("Salvar");
+        jMenu1.add(miSalvarAlumnos);
+
         menuMainWindow.add(jMenu1);
 
         jMenu2.setText("Módulos");
+
+        miCargarModulos.setText("Cargar");
+        jMenu2.add(miCargarModulos);
+
+        miSalvarModulos.setText("Salvar");
+        jMenu2.add(miSalvarModulos);
+
         menuMainWindow.add(jMenu2);
 
         setJMenuBar(menuMainWindow);
@@ -476,6 +529,10 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void miCargarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCargarAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miCargarAlumnosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -510,7 +567,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAlumno;
     private javax.swing.JButton btnAddModulo;
@@ -548,6 +605,10 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblVerModulos;
     private javax.swing.JLabel lblVerNombre;
     private javax.swing.JMenuBar menuMainWindow;
+    private javax.swing.JMenuItem miCargarAlumnos;
+    private javax.swing.JMenuItem miCargarModulos;
+    private javax.swing.JMenuItem miSalvarAlumnos;
+    private javax.swing.JMenuItem miSalvarModulos;
     private javax.swing.JPanel pnlAltaAlumno;
     private javax.swing.JPanel pnlAltaModulo;
     private javax.swing.JPanel pnlButtonHold;

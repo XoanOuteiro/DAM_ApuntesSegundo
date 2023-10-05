@@ -1,11 +1,15 @@
 
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
+ * Represents a subject
+ * 
  * @author XoanOuteiro
  */
-public class Modulo {
+public class Modulo implements Serializable{
     
     //Instance atributes
     private String nombre;

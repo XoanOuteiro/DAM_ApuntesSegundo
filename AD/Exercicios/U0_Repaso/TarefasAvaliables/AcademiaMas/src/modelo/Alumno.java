@@ -1,12 +1,15 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * 
+ * Represents a students
  *
  * @author XoanOuteiro
  */
-public class Alumno {
+public class Alumno implements Serializable{
 
     //Instance atributes
     private String nombre;
@@ -56,9 +59,66 @@ public class Alumno {
     }
 
     //Utility methods
+    /**
+     * 
+     * Adds the given module to a list accesible via getter
+     * 
+     * @param a 
+     */
     public void añadirModulo(Modulo a){
         
         this.modulos.add(a);
+        
+    }
+    
+    /**
+     * 
+     * Returns a list of the names of all the Modulos contained by this
+     * instance if there is at least one
+     * 
+     * @return String[]
+     * @throws IndexOutOfBoundsException if length is less than 1
+     */
+    public String[] getNombreModulos() throws IndexOutOfBoundsException{
+        
+        if(!modulos.isEmpty()){
+        
+            String[] returnable = new String[modulos.size()];
+        
+            for (int i = 0; i < modulos.size(); i++) {
+            
+                returnable[i] = modulos.get(i).getNombre();
+            
+            }
+        
+            return returnable;
+            
+        }else{
+            
+            throw new IndexOutOfBoundsException("Erro: Este alumno non conten modulos");
+            
+        }
+        
+    }
+    
+    /**
+     * 
+     * Returns the sum of all the hours of every Modulo that this
+     * instance has in its list
+     * 
+     * @return double
+     */
+    public double getNumeroHoras(){
+        
+        double returnable = 0;
+        
+        for(Modulo m : this.modulos){
+            
+            returnable = returnable + m.getHoras();
+            
+        }
+        
+        return returnable;
         
     }
 }
