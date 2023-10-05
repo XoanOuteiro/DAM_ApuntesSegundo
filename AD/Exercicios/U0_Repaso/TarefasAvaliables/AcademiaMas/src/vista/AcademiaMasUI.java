@@ -2,6 +2,7 @@
 package vista;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Alumno;
 import modelo.Modulo;
 
@@ -360,6 +361,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         );
 
         btnGrabarModulo.setText("Grabar");
+        btnGrabarModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrabarModuloActionPerformed(evt);
+            }
+        });
 
         btnLimpiarModulo.setText("Limpiar");
         btnLimpiarModulo.addActionListener(new java.awt.event.ActionListener() {
@@ -390,13 +396,13 @@ public class AcademiaMasUI extends javax.swing.JFrame {
             .addGroup(jdlgAltaModulosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(lblAltaModulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlAltaModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jdlgAltaModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGrabarModulo)
                     .addComponent(btnLimpiarModulo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -533,6 +539,59 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_miCargarAlumnosActionPerformed
 
+    private void btnGrabarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarModuloActionPerformed
+       
+        this.dispose();
+        
+    }//GEN-LAST:event_btnGrabarModuloActionPerformed
+
+    @Override
+    public void dispose() {
+        
+        if (this.checkAltaModuloIsValid()){
+            
+            try{
+                
+                this.listaModulos.add(new Modulo(this.txtfNombreModulo.getText(),Integer.parseInt(this.txtfHorasModulo.getText()),Integer.parseInt(this.txtfUnidadesModulo.getText())));
+                this.txtfNombreModulo.setText("");
+                this.txtfHorasModulo.setText("");
+                this.txtfUnidadesModulo.setText("");
+                
+            }catch(NumberFormatException e){
+                
+                this.summonErrorPop("Los campos de hora y unidades deben ser numericos", "Error en Alta");
+                
+            }
+            
+        }else{
+            
+            this.summonErrorPop("Los campos de texto no pueden estar vacios", "Error en Alta");
+            
+        }
+        
+    }
+
+    private boolean checkAltaModuloIsValid(){
+        
+        if(this.txtfNombreModulo.getText().equals("") || this.txtfHorasModulo.getText().equals("") || this.txtfUnidadesModulo.getText().equals("")){
+            
+            return false;
+            
+        }else{
+            
+            return true;
+            
+        }
+        
+        
+    }
+    
+    private void summonErrorPop(String txt, String title){
+        
+        JOptionPane.showMessageDialog(null, txt, title, JOptionPane.WARNING_MESSAGE);
+      
+    }
+    
     /**
      * @param args the command line arguments
      */
