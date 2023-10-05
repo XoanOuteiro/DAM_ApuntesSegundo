@@ -45,9 +45,23 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         lblVerNombre = new javax.swing.JLabel();
         lblVerLocalidad = new javax.swing.JLabel();
         lblHoras = new javax.swing.JLabel();
+        lblContainerNombre = new javax.swing.JLabel();
+        lblContainerLocalidad = new javax.swing.JLabel();
+        lblContainerHoras = new javax.swing.JLabel();
         lblVerModulos = new javax.swing.JLabel();
         jscrlpContainerDatosModulos = new javax.swing.JScrollPane();
         jlstModulosDatos = new javax.swing.JList<>();
+        jdlgAltaModulos = new javax.swing.JDialog();
+        lblAltaModulo = new javax.swing.JLabel();
+        pnlAltaModulo = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtfNombreModulo = new javax.swing.JTextField();
+        txtfHorasModulo = new javax.swing.JTextField();
+        txtfUnidadesModulo = new javax.swing.JTextField();
+        btnGrabarModulo = new javax.swing.JButton();
+        btnLimpiarModulo = new javax.swing.JButton();
         pnlButtonHold = new javax.swing.JPanel();
         btnAddAlumno = new javax.swing.JButton();
         btnAddModulo = new javax.swing.JButton();
@@ -55,6 +69,8 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         menuMainWindow = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+
+        jdlgAltaAlumnos.setResizable(false);
 
         lblAltaAlumnos.setText("ALTA ALUMNOS");
 
@@ -100,6 +116,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         btnGrabar.setText("Grabar");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnQuitar.setText("Quitar");
 
@@ -129,7 +150,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                     .addComponent(jscrListContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(btnQuitar)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jdlgAltaAlumnosLayout.setVerticalGroup(
             jdlgAltaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,8 +171,10 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                 .addGroup(jdlgAltaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGrabar)
                     .addComponent(btnLimpiar))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jdlgBuscarAlumnos.setResizable(false);
 
         lblNombreABuscar.setText("Nombre a buscar:");
 
@@ -165,6 +188,12 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
         lblHoras.setText("Horas:");
 
+        lblContainerNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblContainerLocalidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblContainerHoras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout pnlContainerDatosAlumnoLayout = new javax.swing.GroupLayout(pnlContainerDatosAlumno);
         pnlContainerDatosAlumno.setLayout(pnlContainerDatosAlumnoLayout);
         pnlContainerDatosAlumnoLayout.setHorizontalGroup(
@@ -172,20 +201,35 @@ public class AcademiaMasUI extends javax.swing.JFrame {
             .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblVerNombre)
-                    .addComponent(lblVerLocalidad)
-                    .addComponent(lblHoras))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
+                        .addComponent(lblVerNombre)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblContainerNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
+                        .addComponent(lblHoras)
+                        .addGap(32, 32, 32)
+                        .addComponent(lblContainerHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
+                        .addComponent(lblVerLocalidad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblContainerLocalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlContainerDatosAlumnoLayout.setVerticalGroup(
             pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlContainerDatosAlumnoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblVerNombre)
+                .addGroup(pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVerNombre)
+                    .addComponent(lblContainerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(lblVerLocalidad)
+                .addGroup(pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblVerLocalidad)
+                    .addComponent(lblContainerLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(lblHoras)
+                .addGroup(pnlContainerDatosAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHoras, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblContainerHoras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -234,13 +278,115 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jdlgAltaModulos.setResizable(false);
+
+        lblAltaModulo.setText("ALTA MÓDULOS");
+
+        pnlAltaModulo.setBorder(javax.swing.BorderFactory.createTitledBorder("Añadir Módulo"));
+
+        jLabel2.setText("Nombre:");
+
+        jLabel3.setText("Horas:");
+
+        jLabel4.setText("Unidades:");
+
+        javax.swing.GroupLayout pnlAltaModuloLayout = new javax.swing.GroupLayout(pnlAltaModulo);
+        pnlAltaModulo.setLayout(pnlAltaModuloLayout);
+        pnlAltaModuloLayout.setHorizontalGroup(
+            pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAltaModuloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtfNombreModulo)
+                    .addComponent(txtfHorasModulo)
+                    .addComponent(txtfUnidadesModulo, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlAltaModuloLayout.setVerticalGroup(
+            pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAltaModuloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtfNombreModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtfHorasModulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pnlAltaModuloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtfUnidadesModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        btnGrabarModulo.setText("Grabar");
+
+        btnLimpiarModulo.setText("Limpiar");
+        btnLimpiarModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarModuloActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jdlgAltaModulosLayout = new javax.swing.GroupLayout(jdlgAltaModulos.getContentPane());
+        jdlgAltaModulos.getContentPane().setLayout(jdlgAltaModulosLayout);
+        jdlgAltaModulosLayout.setHorizontalGroup(
+            jdlgAltaModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdlgAltaModulosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdlgAltaModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jdlgAltaModulosLayout.createSequentialGroup()
+                        .addComponent(btnGrabarModulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiarModulo))
+                    .addComponent(pnlAltaModulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jdlgAltaModulosLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(lblAltaModulo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jdlgAltaModulosLayout.setVerticalGroup(
+            jdlgAltaModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdlgAltaModulosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblAltaModulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlAltaModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jdlgAltaModulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGrabarModulo)
+                    .addComponent(btnLimpiarModulo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAddAlumno.setText("Añadir Alumno");
+        btnAddAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAlumnoActionPerformed(evt);
+            }
+        });
 
         btnAddModulo.setText("Añadir Módulo");
+        btnAddModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddModuloActionPerformed(evt);
+            }
+        });
 
         btnSeeAlumno.setText("Ver Alumno");
+        btnSeeAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeeAlumnoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlButtonHoldLayout = new javax.swing.GroupLayout(pnlButtonHold);
         pnlButtonHold.setLayout(pnlButtonHoldLayout);
@@ -294,6 +440,42 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAlumnoActionPerformed
+
+        this.jdlgAltaAlumnos.setVisible(true);
+        this.jdlgAltaAlumnos.setSize(this.jdlgAltaAlumnos.getPreferredSize());
+        
+    }//GEN-LAST:event_btnAddAlumnoActionPerformed
+
+    private void btnAddModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddModuloActionPerformed
+                
+        this.jdlgAltaModulos.setVisible(true);
+        this.jdlgAltaModulos.setSize(this.jdlgAltaModulos.getPreferredSize());
+        
+    }//GEN-LAST:event_btnAddModuloActionPerformed
+
+    private void btnSeeAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeAlumnoActionPerformed
+
+        this.jdlgBuscarAlumnos.setVisible(true);
+        this.jdlgBuscarAlumnos.setSize(this.jdlgBuscarAlumnos.getPreferredSize());
+        
+    }//GEN-LAST:event_btnSeeAlumnoActionPerformed
+
+    private void btnLimpiarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarModuloActionPerformed
+        
+        this.txtfNombreModulo.setText("");
+        this.txtfHorasModulo.setText("");
+        this.txtfUnidadesModulo.setText("");
+        
+    }//GEN-LAST:event_btnLimpiarModuloActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        
+        this.txtfNombre.setText("");
+        this.txtfLocalidad.setText("");
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -333,20 +515,30 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAddAlumno;
     private javax.swing.JButton btnAddModulo;
     private javax.swing.JButton btnGrabar;
+    private javax.swing.JButton btnGrabarModulo;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnLimpiarModulo;
     private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnQuitar;
     private javax.swing.JButton btnSeeAlumno;
     private javax.swing.JComboBox<String> cbbModulos;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JDialog jdlgAltaAlumnos;
+    private javax.swing.JDialog jdlgAltaModulos;
     private javax.swing.JDialog jdlgBuscarAlumnos;
     private javax.swing.JList<String> jlstModulos;
     private javax.swing.JList<String> jlstModulosDatos;
     private javax.swing.JScrollPane jscrListContainer;
     private javax.swing.JScrollPane jscrlpContainerDatosModulos;
     private javax.swing.JLabel lblAltaAlumnos;
+    private javax.swing.JLabel lblAltaModulo;
+    private javax.swing.JLabel lblContainerHoras;
+    private javax.swing.JLabel lblContainerLocalidad;
+    private javax.swing.JLabel lblContainerNombre;
     private javax.swing.JLabel lblHoras;
     private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblModulos;
@@ -357,10 +549,14 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblVerNombre;
     private javax.swing.JMenuBar menuMainWindow;
     private javax.swing.JPanel pnlAltaAlumno;
+    private javax.swing.JPanel pnlAltaModulo;
     private javax.swing.JPanel pnlButtonHold;
     private javax.swing.JPanel pnlContainerDatosAlumno;
+    private javax.swing.JTextField txtfHorasModulo;
     private javax.swing.JTextField txtfLocalidad;
     private javax.swing.JTextField txtfNombre;
     private javax.swing.JTextField txtfNombreABuscar;
+    private javax.swing.JTextField txtfNombreModulo;
+    private javax.swing.JTextField txtfUnidadesModulo;
     // End of variables declaration//GEN-END:variables
 }
