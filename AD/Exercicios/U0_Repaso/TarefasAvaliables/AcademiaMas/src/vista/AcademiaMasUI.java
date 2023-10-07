@@ -1,6 +1,7 @@
-
 package vista;
 
+import controlador.PersistencyHandler;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Alumno;
@@ -11,7 +12,7 @@ import modelo.Modulo;
  * @author XoanOuteiro
  */
 public class AcademiaMasUI extends javax.swing.JFrame {
-    
+
     /*
         
         The code that follows is as faithful as possible to the
@@ -28,21 +29,71 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         As it has been mentioned here already, i will not be pin-pointing each
         and every change when it appears in the code
     
-    */
-    
+     */
     //Class Atributes
     private ArrayList<Alumno> listaAlumnos;
     private ArrayList<Modulo> listaModulos;
+
+    private PersistencyHandler filesys;
 
     /**
      * Creates new form AcademiaMasUI
      */
     public AcademiaMasUI() {
         initComponents();
-        
+
+        saveSystemInit();
+
+    }
+
+    private void saveSystemInit() {
+        try {
+
+            this.filesys = new PersistencyHandler();
+
+        } catch (IOException ex) {
+
+            this.summonErrorPop("Error fatal al inicalizar el sistema de guardado, \n sus acciones desapareceran al cerrar el programa: \n" + ex.getLocalizedMessage(), "Error de incio");
+
+        }
+
+        //Init as empty in case of first-time execution
         this.listaAlumnos = new ArrayList();
         this.listaModulos = new ArrayList();
-        
+
+        //Now attempt-or-pass to preload saves if they exist as to avoid accidental overwrites
+        try {
+
+            this.listaModulos = this.filesys.retrieveModulos();
+
+        } catch (ClassNotFoundException | IOException ex) {
+
+            try { //We assume the files were empty, so we imprint our empty list template
+
+                this.filesys.writeModulos(this.listaModulos);
+
+            } catch (IOException ex1) {
+
+                //this action cannot fail
+            }
+
+        }
+
+        try {   //Separate try statements to avoid breakage
+
+            this.listaAlumnos = this.filesys.retrieveAlumnos();
+
+        } catch (ClassNotFoundException | IOException ex) {
+
+            try { //We assume the files were empty, so we imprint our empty list template
+
+                this.filesys.writeAlumnos(this.listaAlumnos);
+
+            } catch (IOException ex1) {
+
+                //this action cannot fail
+            }
+        }
     }
 
     /**
@@ -463,6 +514,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         jMenu1.add(miCargarAlumnos);
 
         miSalvarAlumnos.setText("Salvar");
+        miSalvarAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSalvarAlumnosActionPerformed(evt);
+            }
+        });
         jMenu1.add(miSalvarAlumnos);
 
         menuMainWindow.add(jMenu1);
@@ -470,9 +526,19 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         jMenu2.setText("Módulos");
 
         miCargarModulos.setText("Cargar");
+        miCargarModulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCargarModulosActionPerformed(evt);
+            }
+        });
         jMenu2.add(miCargarModulos);
 
         miSalvarModulos.setText("Salvar");
+        miSalvarModulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSalvarModulosActionPerformed(evt);
+            }
+        });
         jMenu2.add(miSalvarModulos);
 
         menuMainWindow.add(jMenu2);
@@ -503,95 +569,170 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
         this.jdlgAltaAlumnos.setVisible(true);
         this.jdlgAltaAlumnos.setSize(this.jdlgAltaAlumnos.getPreferredSize());
-        
+
     }//GEN-LAST:event_btnAddAlumnoActionPerformed
 
     private void btnAddModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddModuloActionPerformed
-                
+
         this.jdlgAltaModulos.setVisible(true);
         this.jdlgAltaModulos.setSize(this.jdlgAltaModulos.getPreferredSize());
-        
+
     }//GEN-LAST:event_btnAddModuloActionPerformed
 
     private void btnSeeAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeAlumnoActionPerformed
 
         this.jdlgBuscarAlumnos.setVisible(true);
         this.jdlgBuscarAlumnos.setSize(this.jdlgBuscarAlumnos.getPreferredSize());
-        
+
     }//GEN-LAST:event_btnSeeAlumnoActionPerformed
 
     private void btnLimpiarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarModuloActionPerformed
-        
+
         this.txtfNombreModulo.setText("");
         this.txtfHorasModulo.setText("");
         this.txtfUnidadesModulo.setText("");
-        
+
     }//GEN-LAST:event_btnLimpiarModuloActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        
+
         this.txtfNombre.setText("");
         this.txtfLocalidad.setText("");
-        
+
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void miCargarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCargarAlumnosActionPerformed
-        // TODO add your handling code here:
+
+        this.reLoadAlumnos();
+
     }//GEN-LAST:event_miCargarAlumnosActionPerformed
 
     private void btnGrabarModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarModuloActionPerformed
-       
+
         this.dispose();
-        
+
     }//GEN-LAST:event_btnGrabarModuloActionPerformed
+
+    private void miCargarModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCargarModulosActionPerformed
+
+        this.reLoadModulos();
+        
+    }//GEN-LAST:event_miCargarModulosActionPerformed
+
+    private void miSalvarModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSalvarModulosActionPerformed
+
+        this.saveModulos();
+
+    }//GEN-LAST:event_miSalvarModulosActionPerformed
+
+    private void miSalvarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSalvarAlumnosActionPerformed
+
+        this.saveAlumnos();
+
+    }//GEN-LAST:event_miSalvarAlumnosActionPerformed
+
+    private void reLoadModulos() {
+
+        try {
+
+            this.listaModulos = this.filesys.retrieveModulos();
+
+        } catch (ClassNotFoundException | IOException ex) {
+
+            this.summonErrorPop(ex.getLocalizedMessage(), "Error al cargar modulos guardados");
+
+        }
+
+    }
+
+    private void saveModulos() {
+
+        try {
+
+            this.filesys.writeModulos(this.listaModulos);
+
+        } catch (IOException ex) {
+
+            this.summonErrorPop(ex.getLocalizedMessage(), "Error al guardar modulos");
+
+        }
+
+    }
+
+    private void reLoadAlumnos() {
+
+        try {
+
+            this.listaAlumnos = this.filesys.retrieveAlumnos();
+
+        } catch (ClassNotFoundException | IOException ex) {
+
+            this.summonErrorPop(ex.getLocalizedMessage(), "Error al cargar alumnos guardados");
+
+        }
+
+    }
+
+    private void saveAlumnos() {
+
+        try {
+
+            this.filesys.writeAlumnos(this.listaAlumnos);
+
+        } catch (IOException ex) {
+
+            this.summonErrorPop(ex.getLocalizedMessage(), "Error al guardar alumnos");
+
+        }
+
+    }
 
     @Override
     public void dispose() {
-        
-        if (this.checkAltaModuloIsValid()){
-            
-            try{
-                
-                this.listaModulos.add(new Modulo(this.txtfNombreModulo.getText(),Integer.parseInt(this.txtfHorasModulo.getText()),Integer.parseInt(this.txtfUnidadesModulo.getText())));
+
+        if (this.checkAltaModuloIsValid()) {
+
+            try {
+
+                this.listaModulos.add(new Modulo(this.txtfNombreModulo.getText(), Integer.parseInt(this.txtfHorasModulo.getText()), Integer.parseInt(this.txtfUnidadesModulo.getText())));
                 this.txtfNombreModulo.setText("");
                 this.txtfHorasModulo.setText("");
                 this.txtfUnidadesModulo.setText("");
-                
-            }catch(NumberFormatException e){
-                
+
+            } catch (NumberFormatException e) {
+
                 this.summonErrorPop("Los campos de hora y unidades deben ser numericos", "Error en Alta");
-                
+
             }
-            
-        }else{
-            
+
+        } else {
+
             this.summonErrorPop("Los campos de texto no pueden estar vacios", "Error en Alta");
-            
+
         }
-        
+
     }
 
-    private boolean checkAltaModuloIsValid(){
-        
-        if(this.txtfNombreModulo.getText().equals("") || this.txtfHorasModulo.getText().equals("") || this.txtfUnidadesModulo.getText().equals("")){
-            
+    private boolean checkAltaModuloIsValid() {
+
+        if (this.txtfNombreModulo.getText().equals("") || this.txtfHorasModulo.getText().equals("") || this.txtfUnidadesModulo.getText().equals("")) {
+
             return false;
-            
-        }else{
-            
+
+        } else {
+
             return true;
-            
+
         }
-        
-        
+
     }
-    
-    private void summonErrorPop(String txt, String title){
-        
+
+    private void summonErrorPop(String txt, String title) {
+
         JOptionPane.showMessageDialog(null, txt, title, JOptionPane.WARNING_MESSAGE);
-      
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -626,7 +767,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAlumno;
     private javax.swing.JButton btnAddModulo;
