@@ -50,4 +50,11 @@ public class Modulo implements Serializable{
         this.unidades = unidades;
     }
     
+    @Override
+    public String toString(){
+        
+        return this.getNombre();
+        
+    }
+    
 }

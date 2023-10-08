@@ -3,6 +3,7 @@ package vista;
 import controlador.PersistencyHandler;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import modelo.Alumno;
 import modelo.Modulo;
@@ -35,6 +36,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private ArrayList<Modulo> listaModulos;
 
     private PersistencyHandler filesys;
+
+    private DefaultListModel dlmModulos = new DefaultListModel();
+    private DefaultListModel dlmVerAlumnos = new DefaultListModel();
+    
+    private ArrayList<Modulo> moduloInsertList;
 
     /**
      * Creates new form AcademiaMasUI
@@ -199,6 +205,17 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
         lblModulos.setText("Módulos:");
 
+        cbbModulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbbModulosMouseClicked(evt);
+            }
+        });
+        cbbModulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbModulosActionPerformed(evt);
+            }
+        });
+
         btnGrabar.setText("Grabar");
 
         btnLimpiar.setText("Limpiar");
@@ -230,7 +247,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                                 .addComponent(cbbModulos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jdlgAltaAlumnosLayout.createSequentialGroup()
                                 .addComponent(btnGrabar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnLimpiar)
                                 .addGap(10, 10, 10))))
                     .addComponent(jscrListContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -570,7 +587,21 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         this.jdlgAltaAlumnos.setVisible(true);
         this.jdlgAltaAlumnos.setSize(this.jdlgAltaAlumnos.getPreferredSize());
 
+        this.setComboBox();
+
     }//GEN-LAST:event_btnAddAlumnoActionPerformed
+
+    private void setComboBox() {
+        //Load Modulos to combobox
+
+        this.cbbModulos.removeAllItems();
+
+        for (Modulo m : this.listaModulos) {
+
+            this.cbbModulos.addItem(m.getNombre());
+
+        }
+    }
 
     private void btnAddModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddModuloActionPerformed
 
@@ -598,6 +629,10 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
         this.txtfNombre.setText("");
         this.txtfLocalidad.setText("");
+        this.dlmModulos.clear();
+        this.jlstModulos.setModel(this.dlmModulos);
+        this.cbbModulos.removeAllItems();
+        this.setComboBox();
 
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -616,7 +651,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private void miCargarModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCargarModulosActionPerformed
 
         this.reLoadModulos();
-        
+
     }//GEN-LAST:event_miCargarModulosActionPerformed
 
     private void miSalvarModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSalvarModulosActionPerformed
@@ -630,6 +665,54 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         this.saveAlumnos();
 
     }//GEN-LAST:event_miSalvarAlumnosActionPerformed
+
+    private void cbbModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbModulosActionPerformed
+
+
+    }//GEN-LAST:event_cbbModulosActionPerformed
+
+    private void cbbModulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbModulosMouseClicked
+
+        try {
+            Object modulo1 = this.cbbModulos.getSelectedItem();
+            this.loadModuloList(modulo1.toString());
+            this.cbbModulos.removeItem(modulo1);
+        } catch (NullPointerException e) {
+            e.getMessage();
+        }
+
+    }//GEN-LAST:event_cbbModulosMouseClicked
+
+    private void loadModuloList(String m) {
+        try {
+
+            this.dlmModulos.addElement(m);
+            this.jlstModulos.setModel(this.dlmModulos);
+
+        } catch (NullPointerException e) {
+
+            this.summonErrorPop(e.getLocalizedMessage(), "Error en precarga");
+
+        }
+    }
+
+    private void saveModulosToAlumnoInsert() {
+        
+        this.moduloInsertList = new ArrayList();
+
+        for (int cont = 0; cont < this.dlmModulos.size(); cont++) {
+            
+            for (int cont2 = 0; cont2 < listaModulos.size(); cont2++) {
+                
+                if (this.dlmModulos.get(cont).equals(listaModulos.get(cont2).getNombre())) {
+                    
+                    this.moduloInsertList.add(listaModulos.get(cont2));
+                    
+                }
+            }
+        }
+
+    }
 
     private void reLoadModulos() {
 
