@@ -39,7 +39,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
     private DefaultListModel dlmModulos = new DefaultListModel();
     private DefaultListModel dlmVerAlumnos = new DefaultListModel();
-    
+
     private ArrayList<Modulo> moduloInsertList;
 
     /**
@@ -127,7 +127,6 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         jlstModulos = new javax.swing.JList<>();
         jdlgBuscarAlumnos = new javax.swing.JDialog();
         lblNombreABuscar = new javax.swing.JLabel();
-        txtfNombreABuscar = new javax.swing.JTextField();
         btnMostrar = new javax.swing.JButton();
         pnlContainerDatosAlumno = new javax.swing.JPanel();
         lblVerNombre = new javax.swing.JLabel();
@@ -139,6 +138,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         lblVerModulos = new javax.swing.JLabel();
         jscrlpContainerDatosModulos = new javax.swing.JScrollPane();
         jlstModulosDatos = new javax.swing.JList<>();
+        txtfNombreBuscar = new javax.swing.JTextField();
         jdlgAltaModulos = new javax.swing.JDialog();
         lblAltaModulo = new javax.swing.JLabel();
         pnlAltaModulo = new javax.swing.JPanel();
@@ -217,6 +217,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         });
 
         btnGrabar.setText("Grabar");
+        btnGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrabarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +231,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         });
 
         btnQuitar.setText("Quitar");
+        btnQuitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarActionPerformed(evt);
+            }
+        });
 
         jscrListContainer.setViewportView(jlstModulos);
 
@@ -282,6 +292,11 @@ public class AcademiaMasUI extends javax.swing.JFrame {
         lblNombreABuscar.setText("Nombre a buscar:");
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         pnlContainerDatosAlumno.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del alumno"));
 
@@ -346,7 +361,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
             jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jdlgBuscarAlumnosLayout.createSequentialGroup()
                         .addComponent(lblVerModulos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -355,7 +370,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdlgBuscarAlumnosLayout.createSequentialGroup()
                         .addComponent(lblNombreABuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfNombreABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtfNombreBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -366,8 +381,8 @@ public class AcademiaMasUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jdlgBuscarAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtfNombreABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMostrar))
+                        .addComponent(btnMostrar)
+                        .addComponent(txtfNombreBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblNombreABuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlContainerDatosAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -627,14 +642,18 @@ public class AcademiaMasUI extends javax.swing.JFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
+        limpiarAltaAlumnos();
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void limpiarAltaAlumnos() {
         this.txtfNombre.setText("");
         this.txtfLocalidad.setText("");
         this.dlmModulos.clear();
         this.jlstModulos.setModel(this.dlmModulos);
         this.cbbModulos.removeAllItems();
         this.setComboBox();
-
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+    }
 
     private void miCargarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCargarAlumnosActionPerformed
 
@@ -674,14 +693,114 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private void cbbModulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbModulosMouseClicked
 
         try {
+
             Object modulo1 = this.cbbModulos.getSelectedItem();
             this.loadModuloList(modulo1.toString());
             this.cbbModulos.removeItem(modulo1);
+
         } catch (NullPointerException e) {
+
             e.getMessage();
+
         }
 
     }//GEN-LAST:event_cbbModulosMouseClicked
+
+    private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
+
+        if (!(this.txtfNombre.getText().equals("") || this.txtfLocalidad.getText().equals(""))) {
+
+            this.saveModulosToAlumnoInsert();
+
+            this.listaAlumnos.add(new Alumno(this.txtfNombre.getText(), this.txtfLocalidad.getText(), this.moduloInsertList));
+
+            this.limpiarAltaAlumnos();
+
+        } else {
+
+            this.summonErrorPop("Los campos de texto no pueden estar vacios", "Error en alta alumno");
+
+        }
+
+    }//GEN-LAST:event_btnGrabarActionPerformed
+
+    private void btnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActionPerformed
+
+        try {
+
+            int index = this.jlstModulos.getSelectedIndex();
+            this.cbbModulos.addItem(this.jlstModulos.getSelectedValue());
+
+            //Parte lista
+            this.dlmModulos.remove(index);
+            this.jlstModulos.setModel(this.dlmModulos);
+
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
+
+    }//GEN-LAST:event_btnQuitarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+
+        String nombreABuscar = this.txtfNombreBuscar.getText();
+        
+        cleanupAlumnoQuery();
+        
+        Alumno target = new Alumno("UserNull__", "securityCheckline");
+
+        for (Alumno alumno : listaAlumnos) {
+
+            if (alumno.getNombre().equals(nombreABuscar)) {
+
+                target = alumno;
+
+            }
+
+        }
+
+        //Avoid checking if the user wasnt overwritten via double factor
+        if (!(target.getNombre().equals("UserNull__") && target.getLocalidad().equals("securityCheckline"))) {
+            
+            this.lblContainerNombre.setText(target.getNombre());
+            this.lblContainerLocalidad.setText(target.getLocalidad());
+            this.lblContainerHoras.setText(Double.toString(target.getNumeroHoras()));
+
+            this.jlstModulosDatos.setModel(loadAlumnoModulos(target));
+
+        } else {
+
+            this.summonErrorPop("El usuario especificado no existe.", "Error en la busqueda del alumno.");
+
+        }
+
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void cleanupAlumnoQuery() {
+
+        this.txtfNombreBuscar.setText("");
+        this.lblContainerNombre.setText("");
+        this.lblContainerLocalidad.setText("");
+        this.lblContainerHoras.setText("");
+        this.dlmVerAlumnos.clear();
+        this.jlstModulosDatos.setModel(this.dlmVerAlumnos);
+
+    }
+
+    private DefaultListModel loadAlumnoModulos(Alumno alumno) {
+
+        ArrayList<String> nombresModulos = new ArrayList<>();
+
+        for (int cont = 0; cont < alumno.getNombreModulos().length; cont++) {
+
+            nombresModulos.add(alumno.getNombreModulos()[cont]);
+
+        }
+
+        this.dlmVerAlumnos.addAll(nombresModulos);
+
+        return this.dlmVerAlumnos; //This is probably not the best option but works
+    }
 
     private void loadModuloList(String m) {
         try {
@@ -697,17 +816,17 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     }
 
     private void saveModulosToAlumnoInsert() {
-        
+
         this.moduloInsertList = new ArrayList();
 
         for (int cont = 0; cont < this.dlmModulos.size(); cont++) {
-            
+
             for (int cont2 = 0; cont2 < listaModulos.size(); cont2++) {
-                
+
                 if (this.dlmModulos.get(cont).equals(listaModulos.get(cont2).getNombre())) {
-                    
+
                     this.moduloInsertList.add(listaModulos.get(cont2));
-                    
+
                 }
             }
         }
@@ -899,7 +1018,7 @@ public class AcademiaMasUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtfHorasModulo;
     private javax.swing.JTextField txtfLocalidad;
     private javax.swing.JTextField txtfNombre;
-    private javax.swing.JTextField txtfNombreABuscar;
+    private javax.swing.JTextField txtfNombreBuscar;
     private javax.swing.JTextField txtfNombreModulo;
     private javax.swing.JTextField txtfUnidadesModulo;
     // End of variables declaration//GEN-END:variables

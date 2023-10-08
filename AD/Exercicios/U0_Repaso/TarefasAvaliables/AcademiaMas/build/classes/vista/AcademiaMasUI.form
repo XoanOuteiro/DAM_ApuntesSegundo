@@ -160,6 +160,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Grabar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrabarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnLimpiar">
           <Properties>
@@ -173,6 +176,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Quitar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuitarActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jscrListContainer">
           <AuxValues>
@@ -205,7 +211,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblVerModulos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -215,7 +221,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="lblNombreABuscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtfNombreABuscar" min="-2" pref="148" max="-2" attributes="0"/>
+                          <Component id="txtfNombreBuscar" pref="148" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -230,8 +236,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtfNombreABuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMostrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfNombreBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblNombreABuscar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -258,12 +264,13 @@
             <Property name="text" type="java.lang.String" value="Nombre a buscar:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtfNombreABuscar">
-        </Component>
         <Component class="javax.swing.JButton" name="btnMostrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mostrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="pnlContainerDatosAlumno">
           <Properties>
@@ -392,6 +399,8 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="txtfNombreBuscar">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jdlgAltaModulos">
