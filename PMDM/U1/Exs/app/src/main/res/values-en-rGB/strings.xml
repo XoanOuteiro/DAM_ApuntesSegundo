@@ -1,0 +1,10 @@
+<resources>
+    <string name="hola_mundo">Hello World!</string>
+    <string name="app_name">Resources</string>
+    <string name="boton_6">Button 6</string>
+    <string name="boton_5">Button 5</string>
+    <string name="boton_4">Button 4</string>
+    <string name="boton_3">Button 3</string>
+    <string name="boton_2">Button 2</string>
+    <string name="boton_1">Button 1</string>
+</resources>

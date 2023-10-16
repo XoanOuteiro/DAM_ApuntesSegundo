@@ -12,42 +12,43 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/hola_mundo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="40sp"/>
+        android:textSize="@dimen/texto_normal"
+        android:padding="@dimen/padding_normal"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insertar"
+        android:text="@string/boton_1"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eliminar"
+        android:text="@string/boton_2"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consultar"
+        android:text="@string/boton_3"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modificar"
+        android:text="@string/boton_4"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Otra cosa"
+        android:text="@string/boton_5"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="B1"
+        android:text="@string/boton_6"
         />
 
 
