@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">DosViewsPorCodigo</string>
+    <string name="texto">EtiquetaYepeeeee</string>
+    <string name="textview_desde_c_digo">TextView desde código</string>
+    <string name="bot_n_desde_c_digo">Botón desde código</string>
 </resources>

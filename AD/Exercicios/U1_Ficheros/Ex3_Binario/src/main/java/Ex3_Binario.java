@@ -6,6 +6,9 @@
 public class Ex3_Binario {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        BinBuilder bb = new BinBuilder("texto.txt");
+        bb.toBinary("output.txt");
+        
     }
 }

@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
         // --- Crear una instancia de la clase TextView
         TextView etiqueta1 = new TextView(this);
         // Establecemos el texto
-        etiqueta1.setText("TextView desde código");
+        etiqueta1.setText(R.string.textview_desde_c_digo);
         // Modificamos tamaño y color
         etiqueta1.setTextSize(25);
 
@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
         // --- Crear una instancia de la clase Button
         Button boton1 = new Button(this);
         // Establecemos el texto
-        boton1.setText("Botón desde código");
+        boton1.setText(getResources().getText(R.string.bot_n_desde_c_digo));
         boton1.setLayoutParams(parametros);
         // --- Añadir ambas vistas al objeto Layout
         miLayout.addView(etiqueta1);
