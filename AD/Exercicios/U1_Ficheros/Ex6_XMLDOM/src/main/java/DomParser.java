@@ -52,27 +52,36 @@ public class DomParser {
     
     public void domStamp(){
         
+        crearPersona("01","Antonio","Morales");
+        
+        crearPersona("02","Brais","Diaz");
+                
+
+        guardarArchivo();
+        
+    }
+    
+    public void crearPersona(String id, String nombre, String apellido){
+        
         Element empleado = registroEmpleados.createElement("empleado");
         registroEmpleados.getDocumentElement().appendChild(empleado);
         
-        Element id = registroEmpleados.createElement("id");
+        Element id_ = registroEmpleados.createElement("id");
         
-        Text texto = registroEmpleados.createTextNode("01");
+        Text texto = registroEmpleados.createTextNode(id);
         
-        id.appendChild(texto);
-        empleado.appendChild(id);
+        id_.appendChild(texto);
+        empleado.appendChild(id_);
         
-        Element nombre = registroEmpleados.createElement("nombre");
-        texto = registroEmpleados.createTextNode("Antonio");
-        nombre.appendChild(texto);
-        empleado.appendChild(nombre);
+        Element nombre_ = registroEmpleados.createElement("nombre");
+        texto = registroEmpleados.createTextNode(nombre);
+        nombre_.appendChild(texto);
+        empleado.appendChild(nombre_);
         
-        Element apellidos = registroEmpleados.createElement("apellido");
-        texto = registroEmpleados.createTextNode("Morales");
-        apellidos.appendChild(texto);
-        empleado.appendChild(apellidos);
-
-        guardarArchivo();
+        Element apellido_ = registroEmpleados.createElement("apellido");
+        texto = registroEmpleados.createTextNode(apellido);
+        apellido_.appendChild(texto);
+        empleado.appendChild(apellido_);
         
     }
     
