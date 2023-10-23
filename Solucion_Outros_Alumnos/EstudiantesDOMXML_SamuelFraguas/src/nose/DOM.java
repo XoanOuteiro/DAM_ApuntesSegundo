@@ -1,3 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package nose;
 
 import java.io.File;
 import javax.xml.transform.OutputKeys;
@@ -14,33 +19,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-
 /**
  *
- * @author XoanOuteiro
+ * @author a22samuelfn
  */
-public class DomModf {
+public class DOM {
 
-    
-    /*
-    private void removeWhitespaces(Element element) {
-        NodeList children = element.getChildNodes();
-        for (int i = children.getLength() - 1; i >= 0; i--) {
-            Node child = children.item(i);
-            if (child instanceof Text
-                    && ((Text) child).getData().trim().isEmpty()) {
-                element.removeChild(child);
-            } else if (child instanceof Element) {
-                removeWhitespaces((Element) child);
-            }
-        }
-    }
-    */
-    
     private Document docu;
     private NodeList estudiantes;
 
-    public DomModf(Document docu) {
+    public DOM(Document docu) {
         docu.getDocumentElement().normalize();
         this.docu = docu;
         estudiantes = this.docu.getElementsByTagName("estudiante");
@@ -100,5 +88,4 @@ public class DomModf {
             }
         }
     }
-
 }

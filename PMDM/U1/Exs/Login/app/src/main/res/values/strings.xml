@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Exercicio_Login</string>
+    <string name="conectar">Conectar</string>
+    <string name="olvidaste_tu_contrase_a">¿Olvidaste tu contraseña?</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="nombre">Nombre</string>
 </resources>
