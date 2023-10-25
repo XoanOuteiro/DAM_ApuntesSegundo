@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        status.setText("Has pulsado el boton No se")
+        status.setText("Has pulsado el boton No se");
 
     }
 
