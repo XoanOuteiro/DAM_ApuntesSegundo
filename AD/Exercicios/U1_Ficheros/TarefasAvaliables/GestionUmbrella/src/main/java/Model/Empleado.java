@@ -3,6 +3,8 @@ package Model;
 
 /**
  *
+ *      Represents an employee logically
+ * 
  * @author XoanOuteiro
  */
 public class Empleado {
