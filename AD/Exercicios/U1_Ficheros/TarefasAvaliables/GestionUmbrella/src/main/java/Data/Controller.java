@@ -77,6 +77,19 @@ public class Controller {
 
     }
 
+    public void listar(){
+
+        for(Empleado e : this.sys){
+
+            if(!(e.getNif().equals("-1"))){
+
+                System.out.println("Nif: " + e.getNif() + "\t Name: " + e.getNombre() +"\t Surname: " + e.getApellidos() + "\t Salary: " + e.getSalario());
+
+            }
+        }
+
+    }
+
     //Own methods
     private boolean checkUnused(String n) {
 
