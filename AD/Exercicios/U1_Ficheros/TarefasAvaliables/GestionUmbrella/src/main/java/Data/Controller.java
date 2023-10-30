@@ -34,12 +34,12 @@ public class Controller {
             This is not the recommended design pattern
          */
         float salary;
-        
-        Scanner reads = new Scanner(System.in);
-        System.out.println("Input user NIF ... ");
-        String nif = reads.nextLine();
 
-        if (nif.length() == 9 && checkUnused(nif)) {
+        Scanner reads = new Scanner(System.in);
+        
+        String nif = this.askForDni();
+
+        if (nif != null && checkUnused(nif)) {
 
             System.out.println("Input employee name ... ");
             String name = reads.nextLine();
@@ -77,6 +77,32 @@ public class Controller {
 
     }
 
+    public void borrado() throws NullPointerException {
+
+        String nif = this.askForDni();
+
+        if(nif != null) {
+
+            Empleado e = this.getUserByNif(nif);
+
+            if (e != null) {
+
+                e.setNif("-1");
+                System.out.println("user deleted.");
+
+            } else {
+
+                throw new NullPointerException("User not found.");
+
+            }
+
+        } else {
+
+            throw new NullPointerException("User not found.");
+
+        }
+    }
+
     public void listar(){
 
         for(Empleado e : this.sys){
@@ -87,6 +113,72 @@ public class Controller {
 
             }
         }
+    }
+
+    public void modificacion() throws NullPointerException, InputMismatchException{
+
+        Scanner reads = new Scanner(System.in);
+
+        String nif = this.askForDni();
+
+        if(nif != null) {
+
+            Empleado e = this.getUserByNif(nif);
+
+            if (e != null) {
+
+                System.out.println("Input new salary for user " + e.getNombre() + " ... ");
+                try {
+
+                    float salary = reads.nextFloat();
+                    reads.nextLine(); //Flush buffer
+
+                    e.setSalario(salary);
+
+                } catch (Exception error) {
+
+                    throw new InputMismatchException("Salary value invalid");
+
+                }
+
+            } else {
+
+                throw new NullPointerException("Users NIF does not exist.");
+
+            }
+
+        } else {
+
+            throw new NullPointerException("User not found");
+
+        }
+    }
+
+    public void consulta() throws NullPointerException{
+
+        Scanner reads = new Scanner(System.in);
+
+        String nif = this.askForDni();
+
+        if(nif != null) {
+
+            Empleado e = this.getUserByNif(nif);
+
+            if (e != null) {
+
+                System.out.println("Nif: " + e.getNif() + "\t Name: " + e.getNombre() + "\t Surname: " + e.getApellidos() + "\t Salary: " + e.getSalario());
+
+            } else {
+
+                throw new NullPointerException("User not found");
+
+            }
+
+        } else {
+
+            throw new NullPointerException("User not found.");
+
+        }
 
     }
 
@@ -96,12 +188,48 @@ public class Controller {
         for (Empleado e : sys) {
 
             if (e.getNif().equals(n)) {
+
                 return false;
+
             }
 
         }
 
         return true;
+
+    }
+
+    private Empleado getUserByNif(String nif){
+
+        for(Empleado e : this.sys){
+
+            if(e.getNif().equals(nif)){
+
+                return e;
+
+            }
+
+        }
+
+        return null;
+
+    }
+
+    private String askForDni(){
+
+        Scanner reads = new Scanner(System.in);
+        System.out.println("Input user NIF ... ");
+        String nif = reads.nextLine();
+
+        if(nif.length() == 9 && !(nif.equals("-1"))){
+
+            return nif;
+
+        } else {
+
+            return null;
+
+        }
 
     }
 }
