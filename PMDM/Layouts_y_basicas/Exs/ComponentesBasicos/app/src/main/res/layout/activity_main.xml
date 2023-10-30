@@ -31,11 +31,13 @@
             android:background="@color/black" />
 
         <EditText
+            android:id="@+id/texto_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Introduce nombre" />
 
         <EditText
+            android:id="@+id/texto_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Introduce edad"
@@ -71,6 +73,7 @@
             android:background="@color/black" />
 
         <Button
+            android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Boton normal" />
@@ -87,12 +90,14 @@
             android:text="Ok" />
 
         <ToggleButton
+            android:id="@+id/tglButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOff="Off"
             android:textOn="Pulsado" />
 
         <CheckBox
+            android:id="@+id/chk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Acepto las condiciones"/>
