@@ -1,6 +1,8 @@
 package Data;
 
 import Model.Empleado;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -21,9 +23,17 @@ public class Controller {
     //Builder methods
     public Controller() {
 
-        this.dth = new DataHandler();
+        try {
 
-        this.sys = dth.doImport();
+            this.dth = new DataHandler();
+
+            this.sys = this.dth.doImportSequence();
+
+        }catch (IOException ex){
+
+            System.out.println("Output file not found. ");
+
+        }
 
     }
 
@@ -63,6 +73,10 @@ public class Controller {
 
                 this.sys.add(new Empleado(nif, name, surname,salary));
 
+                //Ex 1 save
+                this.attemptSave();
+
+
             } else {
                 
                 throw new InputMismatchException("Name or surname too long.");
@@ -89,6 +103,9 @@ public class Controller {
 
                 e.setNif("-1");
                 System.out.println("user deleted.");
+
+                //Ex 1 save
+                this.attemptSave();
 
             } else {
 
@@ -134,6 +151,9 @@ public class Controller {
                     reads.nextLine(); //Flush buffer
 
                     e.setSalario(salary);
+
+                    //Ex 1 save
+                    this.attemptSave();
 
                 } catch (Exception error) {
 
@@ -183,6 +203,20 @@ public class Controller {
     }
 
     //Own methods
+    public void attemptSave(){
+
+        try{
+
+            this.dth.outputSavestate(this.sys);
+
+        }catch(IOException ex){
+
+            System.out.println("ERROR: Init was ignored so state isn't being saved. Please restart your program as admin.");
+
+        }
+
+    }
+
     private boolean checkUnused(String n) {
 
         for (Empleado e : sys) {
@@ -230,6 +264,7 @@ public class Controller {
             return null;
 
         }
-
     }
+
+
 }

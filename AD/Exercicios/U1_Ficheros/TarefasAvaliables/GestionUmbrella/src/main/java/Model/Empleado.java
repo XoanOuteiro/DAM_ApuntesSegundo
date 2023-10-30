@@ -1,12 +1,14 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * Represents an employee logically
  *
  * @author XoanOuteiro
  */
-public class Empleado {
+public class Empleado implements Serializable {
 
     //Instance data
     private String nif;

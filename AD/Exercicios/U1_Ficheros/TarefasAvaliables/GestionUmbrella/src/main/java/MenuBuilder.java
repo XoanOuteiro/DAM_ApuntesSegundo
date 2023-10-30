@@ -127,6 +127,8 @@ public class MenuBuilder {
 
                 try {
 
+                    this.ctr.attemptSave();
+
                     return true;
 
                 } catch (Exception ex) {
