@@ -141,7 +141,7 @@ public class DataHandler {
         }
     }
     
-        public ArrayList<Empleado> doImportSequence() {
+    public ArrayList<Empleado> doImportSequence() {
 
         try{ //Check if file is empty trying to obtain data
 
