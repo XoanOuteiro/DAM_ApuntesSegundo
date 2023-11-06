@@ -29,6 +29,7 @@ public class Mayúsculas {
             String texto;
 
             do {
+                
                 texto = in.readLine();
                 ps.println(texto); // se lo escribo al hijo en su entrada estándar, para que lo procese.....
                 ps.flush();
@@ -38,6 +39,7 @@ public class Mayúsculas {
                 if (line.compareTo("kk") != 0) {
                     fw.write(line + "\r\n");  // la cadena procesada la escribo en el fichero
                 }
+                
             } while (texto.compareTo("ff") != 0);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
