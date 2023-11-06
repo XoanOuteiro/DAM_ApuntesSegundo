@@ -15,7 +15,8 @@
         android:id="@+id/etxtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre..."/>
+        android:hint="Nombre..."
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/etxtAnho"

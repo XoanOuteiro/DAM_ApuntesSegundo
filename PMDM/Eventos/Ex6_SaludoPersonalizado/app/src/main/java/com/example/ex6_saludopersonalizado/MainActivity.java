@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.Year;
 import java.util.Calendar;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         this.inits();
     }
 
-    private void inits(){
+    private void inits() {
 
         //Edit Text
         this.etxtNombre = findViewById(R.id.etxtNombre);
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
 
-                if (checkedId == R.id.sr){
+                if (checkedId == R.id.sr) {
 
                     genero = "Sr. ";
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
 
-                if (checkedId == R.id.rbtnAdios){
+                if (checkedId == R.id.rbtnAdios) {
 
                     despedida = "Adios.";
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if (chkDespedida.isChecked()){
+                if (chkDespedida.isChecked()) {
 
                     llDespedida.setVisibility(View.VISIBLE);
 
@@ -117,11 +118,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String printable = "Hola " + genero + etxtNombre.getText().toString() + "\n";
-                String edad = comprobarEdad() ? "Eres mayor de edad\n" : "Eres menor de edad\n";
-                printable = printable + edad;
+                try {
 
-                if (chkDespedida.isChecked()){
+                    String printable = "Hola " + genero + etxtNombre.getText().toString() + "\n";
+                    String edad = comprobarEdad() ? "Eres mayor de edad\n" : "Eres menor de edad\n";
+                    printable = printable + edad;
+
+                if (chkDespedida.isChecked()) {
 
                     printable = printable + despedida;
 
@@ -133,6 +136,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                } catch (Exception ex) {
+
+                    Toast.makeText(MainActivity.this, "Porfavor indique nombre y edad.", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
 
@@ -140,21 +149,20 @@ public class MainActivity extends AppCompatActivity {
         this.txtFinal = findViewById(R.id.txtFinal);
 
 
-
         //Defaults
         this.llDespedida.setVisibility(View.GONE);
     }
 
-    private boolean comprobarEdad(){
+    private boolean comprobarEdad() {
 
         int y = Integer.parseInt(this.etxtAnho.getText().toString());
         int current = Calendar.getInstance().get(Calendar.YEAR);
 
-        if((current - y) >= 18){
+        if ((current - y) >= 18) {
 
             return true;
 
-        }else{
+        } else {
 
             return false;
 

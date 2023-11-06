@@ -20,15 +20,6 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\a22xoanmoj\.android\avd\Nexus_7_API_23.avd" />
-          </Key>
-        </deviceKey>
-      </Target>
-      <Target>
-        <type value="RUNNING_DEVICE_TARGET" />
-        <deviceKey>
-          <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
             <value value="C:\Users\a22xoanmoj\.android\avd\Pixel_3a_API_23.avd" />
           </Key>
         </deviceKey>
