@@ -101,7 +101,7 @@ public class DataHandler {
     }
 
 
-    public ArrayList<Empleado> retrieveFromXML() {
+    public ArrayList<Empleado> retrieveFromXML() throws NullPointerException{
         try {
             
             ArrayList<Empleado> empleados = new ArrayList<>();

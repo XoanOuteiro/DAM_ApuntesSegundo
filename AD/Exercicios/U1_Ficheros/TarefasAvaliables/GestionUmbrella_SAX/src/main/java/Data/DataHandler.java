@@ -9,6 +9,8 @@ import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -16,6 +18,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 import org.w3c.dom.NodeList;
 
 /**
@@ -101,36 +106,53 @@ public class DataHandler {
     }
 
 
-    public ArrayList<Empleado> retrieveFromXML() {
+    public ArrayList<Empleado> retrieveFromXML() throws Exception {
         try {
-            
             ArrayList<Empleado> empleados = new ArrayList<>();
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(refSystem);
-            doc.getDocumentElement().normalize();
 
-            NodeList empleadoNodes = doc.getElementsByTagName("Empleado");
-            
-            for (int i = 0; i < empleadoNodes.getLength(); i++) {
-                
-                Element empleadoElement = (Element) empleadoNodes.item(i);
-                String nif = empleadoElement.getElementsByTagName("NIF").item(0).getTextContent();
-                String nombre = empleadoElement.getElementsByTagName("Nombre").item(0).getTextContent();
-                String apellidos = empleadoElement.getElementsByTagName("Apellidos").item(0).getTextContent();
-                float salario = Float.parseFloat(empleadoElement.getElementsByTagName("Salario").item(0).getTextContent());
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
 
-                Empleado empleado = new Empleado(nif, nombre, apellidos, salario);
-                
-                empleados.add(empleado);
-            }
+            DefaultHandler handler = new DefaultHandler() {
+                private Empleado currentEmpleado;
+                private StringBuilder currentData;
+
+                @Override
+                public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+                    currentData = new StringBuilder();
+                    if (qName.equals("Empleado")) {
+                        currentEmpleado = new Empleado("0","0","0",0);
+                    }
+                }
+
+                @Override
+                public void characters(char[] ch, int start, int length) throws SAXException {
+                    if (currentData != null) {
+                        currentData.append(ch, start, length);
+                    }
+                }
+
+                @Override
+                public void endElement(String uri, String localName, String qName) throws SAXException {
+                    switch (qName) {
+                        case "NIF" -> currentEmpleado.setNif(currentData.toString().trim());
+                        case "Nombre" -> currentEmpleado.setNombre(currentData.toString().trim());
+                        case "Apellidos" -> currentEmpleado.setApellidos(currentData.toString().trim());
+                        case "Salario" -> currentEmpleado.setSalario(Float.parseFloat(currentData.toString().trim()));
+                        case "Empleado" -> {
+                            empleados.add(currentEmpleado);
+                            currentEmpleado = null;
+                        }
+                    }
+                    currentData = null;
+                }
+            };
+
+            saxParser.parse(refSystem, handler);
 
             return empleados;
-            
         } catch (Exception e) {
-
             throw new NullPointerException("Error when pulling empleados from XML");
-
         }
     }
 

@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Empleados/>
+<Empleados>
+    <Empleado>
+        <NIF>00000000T</NIF>
+        <Nombre>Usuario</Nombre>
+        <Apellidos>Pruebas</Apellidos>
+        <Salario>900.0</Salario>
+    </Empleado>
+    <Empleado>
+        <NIF>11111111D</NIF>
+        <Nombre>Pruebas</Nombre>
+        <Apellidos>Usuario</Apellidos>
+        <Salario>900.0</Salario>
+    </Empleado>
+</Empleados>
