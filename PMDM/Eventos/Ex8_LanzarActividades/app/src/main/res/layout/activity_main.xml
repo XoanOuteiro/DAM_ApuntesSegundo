@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manejo de activities" />
+
+    <Button
+        android:id="@+id/llamadaActividad2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LLamada a la activity 2"
+        android:onClick="onClickCambioActivity"/>
+
+    <!-- LLamar a activity pasandole datos -->
+
+    <Button
+        android:id="@+id/llamadaActividad3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LLamada a la activity3 + datos"
+        android:onClick="onClickCambioActivity"/>
+
+</LinearLayout>
