@@ -1,0 +1,4 @@
+Dni: -1  Nombre: Jose  Apellido: Fernandez  Salario: 1300
+Dni: 12345678b  Nombre: Manuel  Apellido: Martinez  Salario: 1350
+Dni: -1  Nombre: Felipe  Apellido: Gonzalez  Salario: 1250
+Dni: 12345678d  Nombre: Fernando  Apellido: Rodriguez  Salario: 1270
