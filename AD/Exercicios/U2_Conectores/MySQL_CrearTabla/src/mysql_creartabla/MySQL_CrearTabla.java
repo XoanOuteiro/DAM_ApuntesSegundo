@@ -26,7 +26,7 @@ public class MySQL_CrearTabla {
             
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/empleados","root","root");
             
-            String update = "Create table if not exists Salarios(codigo varchar(3), categoria varchar(20), constraint salario_pk  PRIMARY KEY(codigo))";
+            String update = "Create table if not exists Salarios(codigo integer primary key auto_increment, categoria varchar(20))";
             Statement s = con.createStatement();
             int result = s.executeUpdate(update);
             
