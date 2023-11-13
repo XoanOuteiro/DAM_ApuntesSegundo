@@ -115,6 +115,18 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }*/
+        } else if (view.getId()==R.id.btnLLamadaSystemApp){
+
+            try{
+
+                intent = new Intent();
+                intent.setClassName("com.android.calculator2", "com.android.calculator2.Calculator");
+                startActivity(intent);
+
+            }catch(ActivityNotFoundException act){
+                Toast.makeText(this, "App no encontrada.", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }

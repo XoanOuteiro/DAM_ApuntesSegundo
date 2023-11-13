@@ -59,4 +59,11 @@
         android:layout_height="wrap_content"
         android:text="Llamada Otra App"
         android:onClick="onClickCambioActivity"/>
+
+    <Button
+        android:id="@+id/btnLLamadaSystemApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LLamar calculadora"
+        android:onClick="onClickCambioActivity"/>
 </LinearLayout>
