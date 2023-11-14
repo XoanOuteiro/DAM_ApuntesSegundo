@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<estudiantes>
+    <estudiante>
+        <id>1</id>
+        <nombre>Alberto</nombre>
+        <edad>33</edad>
+    </estudiante>
+    <estudiante>
+        <id>2</id>
+        <nombre>Alex</nombre>
+        <edad>11</edad>
+    </estudiante>
+    <estudiante>
+        <id>3</id>
+        <nombre>Luis</nombre>
+        <edad>25</edad>
+    </estudiante>
+    <estudiante>
+        <id>4</id>
+        <nombre>Marta</nombre>
+        <edad>41</edad>
+    </estudiante>
+    <estudiante>
+        <id>Lorena</id>
+        <nombre>Lorena</nombre>
+        <edad>33</edad>
+    </estudiante>
+</estudiantes>

@@ -62,9 +62,9 @@ public class DataHandler {
         }catch(IOException | ClassNotFoundException ex){    //If the exception is caught we assume that our file is empty
 
             /*
-                We ensure that this part is only a first-time executable imprinting a
-                default empty header for our ArrayList of employees. Be there no inputs
-                our system will never reach this part again unless the file is deleted
+                To ensure the file isnt found empty on a secondary execution
+                we imprint it with a header representing an empty list of our
+                given object type
              */
 
             try {
@@ -84,7 +84,7 @@ public class DataHandler {
 
         }
 
-        return null;    //Final absolute nullable.
+        return null;    //Final absolute nullable, objectively unreachable
 
     }
 
