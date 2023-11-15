@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     requestPermissions(new String[]{android.Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONICA);
 
                 }
+
+            case R.id.btnURL:
+
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.blender.org/"));
+                startActivity(intent);
+                break;
         }
     }
     @Override

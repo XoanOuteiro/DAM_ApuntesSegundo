@@ -1,0 +1,1 @@
+Intentei optimizar reutilizacion, non funciona doPull en DOM() pero si escribe

@@ -37,4 +37,11 @@
         android:text="Llamar al 091"
         android:onClick="onClickBtn"/>
 
+    <Button
+        android:id="@+id/btnURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL"
+        android:onClick="onClickBtn"/>
+
 </LinearLayout>
