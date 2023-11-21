@@ -44,4 +44,11 @@
         android:text="URL"
         android:onClick="onClickBtn"/>
 
+    <Button
+        android:id="@+id/btnGoogleMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abrir Google Maps"
+        android:onClick="onClickBtn"/>
+
 </LinearLayout>

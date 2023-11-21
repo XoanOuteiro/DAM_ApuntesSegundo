@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.intentsimplicitos_api22"
+    namespace = "com.example.alarma"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.intentsimplicitos_api22"
+        applicationId = "com.example.alarma"
         minSdk = 22
         targetSdk = 34
         versionCode = 1

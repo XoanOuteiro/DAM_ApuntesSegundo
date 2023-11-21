@@ -3,9 +3,11 @@ package com.example.intentsimplicitos_api22;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -48,21 +50,40 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;*/
 
-                if(checkSelfPermission(android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                if (Build.VERSION.SDK_INT >= 23) {
+                    if(checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
 
-                    intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:091"));
-                    startActivity(intent);
+                        intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:091"));
+                        startActivity(intent);
 
-                }else{
+                    }else{
 
-                    requestPermissions(new String[]{android.Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONICA);
+                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, LLAMADA_TELEFONICA);
 
+                    }
                 }
+                break;
 
             case R.id.btnURL:
 
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.blender.org/"));
                 startActivity(intent);
+                break;
+
+
+            case R.id.btnGoogleMaps:
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:42.25, -8.68"));
+                intent.setPackage("com.google.android.apps.map");
+
+                if(intent.resolveActivity(getPackageManager()) != null){
+
+                    startActivity(intent);
+
+                }else{
+
+                    Toast.makeText(this, "No se puede acceder a google maps", Toast.LENGTH_SHORT).show();
+
+                }
                 break;
         }
     }
