@@ -1,6 +1,10 @@
 
 package view;
 
+import controller.QueryHandler;
+
+import javax.management.Query;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -10,11 +14,22 @@ import java.util.Scanner;
  */
 public class MenuBuilder {
     
-    
+    private QueryHandler qh;
+
     public MenuBuilder(){
         
         this.initMainMenu();
-        
+
+        try {
+
+            this.qh = new QueryHandler();
+
+        } catch (SQLException e) {
+
+            System.out.println("[ERROR][MenuBuilder()/@switchInput]: " + e.getLocalizedMessage());
+
+        }
+
     }
     
     public void initMainMenu(){
@@ -31,9 +46,74 @@ public class MenuBuilder {
             System.out.println("Waiting for user input ... ");
             
             String input = reads.nextLine();
-            
-            
-            
+
+            try {
+
+                hasExited = this.switchInput(input);
+
+            } catch (SQLException e) {
+
+                System.out.println("[ERROR][initMainMenu()/@switchInput]: " + e.getLocalizedMessage());
+
+            }
+
         }while(!hasExited);
+    }
+    
+    private boolean switchInput(String inpt) throws SQLException {
+
+        switch(inpt){
+
+            case "1":
+                this.qh.getQueryAll();
+                return false;
+
+            case "2":
+
+                System.out.println(">> ");
+                String
+
+                return false;
+
+            case "3":
+
+                return false;
+
+            case "4":
+
+                return false;
+
+            case "0":
+
+                return true;
+
+            default:
+                System.out.println(">ERROR: Input invalid");
+                return false;
+
+        }
+        
+    }
+
+    //Request to user methods
+    private String pedirDni(){
+
+        Scanner reads = new Scanner(System.in);
+
+        System.out.println(">>[WAITING FOR USER INPUT] Nif ... ");
+        String returnable = reads.nextLine();
+
+        if(returnable.length() <= 45){
+            
+            return returnable;
+
+        }else{
+
+            System.out.println("[ERROR][pedirDni()/@returnable<=45]: DNI is too long.");
+
+        }
+
+        return "";
+
     }
 }
