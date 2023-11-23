@@ -17,18 +17,19 @@ public class MenuBuilder {
     private QueryHandler qh;
 
     public MenuBuilder(){
-        
-        this.initMainMenu();
 
         try {
 
             this.qh = new QueryHandler();
 
-        } catch (SQLException e) {
+
+        } catch (Exception e) {
 
             System.out.println("[ERROR][MenuBuilder()/@switchInput]: " + e.getLocalizedMessage());
 
         }
+
+        this.initMainMenu();
 
     }
     
@@ -38,6 +39,7 @@ public class MenuBuilder {
         Scanner reads = new Scanner(System.in); 
         
         do{
+            this.cls();
             System.out.println("1-> Query all users");
             System.out.println("2-> Query users by DNI/NIF");
             System.out.println("3-> Query users by salary (> than input)");
@@ -65,22 +67,33 @@ public class MenuBuilder {
         switch(inpt){
 
             case "1":
-                this.qh.getQueryAll();
+                System.out.println(this.qh.getQueryAll());
                 return false;
 
             case "2":
 
-                System.out.println(">> ");
-                String
-
+                String dni = this.pedirDni();
+                System.out.println(this.qh.getQueryByNif(dni));
                 return false;
 
             case "3":
 
+                int gsalary = this.pedirSalario();
+                if(gsalary != -1) {
+
+                    System.out.println(this.qh.getQueryByGreaterThanSalary(gsalary));
+
+                }
                 return false;
 
             case "4":
 
+                int lsalary = this.pedirSalario();
+                if(lsalary != -1) {
+
+                    System.out.println(this.qh.getQueryByLesserThanSalary(lsalary));
+
+                }
                 return false;
 
             case "0":
@@ -114,6 +127,39 @@ public class MenuBuilder {
         }
 
         return "";
+
+    }
+
+    private int pedirSalario(){
+
+        Scanner reads = new Scanner(System.in);
+        int value = 0;
+
+        System.out.println(">>[WAITING FOR USER INPUT] Salary ... ");
+
+        try{
+
+            value = reads.nextInt();
+            reads.nextLine(); //Buffer flush
+            return value;
+
+        }catch(Exception ex){
+
+            System.out.println("[ERROR][pedirSalario()/@numberFormat]: Value cannot be parsed to number");
+
+        }
+
+        return -1;
+
+    }
+
+    private void cls(){
+
+        for(int i = 0; i<= 5; i++){
+
+            System.out.println();
+
+        }
 
     }
 }
