@@ -216,6 +216,20 @@ public class MenuBuilder {
 
             case "a":
 
+                String nif = this.pedirDni();
+                String nss = this.pedirNss();
+                String nombre = this.pedirNombre();
+
+                try{
+
+                    this.qh.insertNewEmployee(nss,nombre,nif);
+
+                }catch(SQLException ex){
+
+                    System.out.println(ex.getLocalizedMessage());
+
+                }
+
                 return false;
 
             case "b":
@@ -223,6 +237,18 @@ public class MenuBuilder {
                 return false;
 
             case "c":
+
+                String nifc = this.pedirDni();
+
+                try{
+
+                    this.qh.deleteEmployee(nifc);
+
+                }catch(SQLException ex){
+
+                    System.out.println(ex.getLocalizedMessage());
+
+                }
 
                 return false;
 
@@ -330,6 +356,48 @@ public class MenuBuilder {
         }else{
 
             System.out.println("[ERROR][pedirDni()/@returnable<=45]: DNI is too long.");
+
+        }
+
+        return "";
+
+    }
+
+    private String pedirNss(){
+
+        Scanner reads = new Scanner(System.in);
+
+        System.out.println(">>[WAITING FOR USER INPUT] NSS ... [<=6]");
+        String returnable = reads.nextLine();
+
+        if(returnable.length() <= 6){
+
+            return returnable;
+
+        }else{
+
+            System.out.println("[ERROR][pedirNss()/@returnable<=6]: NSS is too long.");
+
+        }
+
+        return "";
+
+    }
+
+    private String pedirNombre(){
+
+        Scanner reads = new Scanner(System.in);
+
+        System.out.println(">>[WAITING FOR USER INPUT] Name ... [<= 6]");
+        String returnable = reads.nextLine();
+
+        if(returnable.length() <= 6){
+
+            return returnable;
+
+        }else{
+
+            System.out.println("[ERROR][pedirNombre()/@returnable<=6]: Name is too long.");
 
         }
 

@@ -24,6 +24,13 @@ public class QueryHandler {
     private PreparedStatement qByGTSalary;
     private PreparedStatement qByLTSalary;
 
+    //Employee tampering strings
+    private String insertEmployee = "insert into empleado (NSS,Nombre,NIF) values (?,?,?)";
+    private PreparedStatement iEmployee;
+
+    private String deleteEmmployee = "delete from empleado where nif = ?";
+    private PreparedStatement dEmployee;
+
 
     //Builder methods
     public QueryHandler() throws SQLException {
@@ -35,6 +42,8 @@ public class QueryHandler {
         this.qByNif = con.prepareStatement(this.queryByNif);
         this.qByGTSalary = con.prepareStatement(this.queryByGreaterThanSalary);
         this.qByLTSalary = con.prepareStatement(this.queryByLesserThanSalary);
+        this.iEmployee = con.prepareStatement(this.insertEmployee);
+        this.dEmployee = con.prepareStatement(this.deleteEmmployee);
 
     }
 
@@ -106,6 +115,47 @@ public class QueryHandler {
         }
 
         return returnable;
+
+    }
+
+    /*
+
+        ---Employee tampering---
+
+     */
+    public void insertNewEmployee( String nss,  String nombre, String nif) throws SQLException {
+
+        try {
+
+            this.iEmployee.setString(1, nss);
+            this.iEmployee.setString(2,nombre);
+            this.iEmployee.setString(3,nif);
+
+            this.iEmployee.execute();
+
+        }catch(Exception e){
+
+            throw new SQLException("[ERROR][@insertNewEmployee()] Insert failed: " + e.getLocalizedMessage());
+
+        }
+    }
+
+    public void modifyEmployee(){
+        //TBD
+    }
+
+    public void deleteEmployee(String nif) throws SQLException {
+
+        try{
+
+            this.dEmployee.setString(1,nif);
+            this.dEmployee.execute();
+
+        }catch(Exception e){
+
+            throw new SQLException("[ERROR][@deleteEmployee()] Delete failed: " + e.getLocalizedMessage());
+
+        }
 
     }
 }
