@@ -303,29 +303,103 @@ public class MenuBuilder {
 
     private boolean switchDepartmentManagementInput(String inpt){
 
+        Scanner reads = new Scanner(System.in);
+
         switch(inpt){
 
             case "a":
 
+                String name = this.pedirNombreDep();
+                System.out.println("Waiting for numDep ... ");
+                int num = reads.nextInt();
+                reads.nextLine();
+
+                if(name != ""){
+
+                    try{
+
+                        this.qh.insertNewDepartment(name, num);
+
+                    }catch(SQLException e){
+
+                        System.out.println("[ERROR][switchDepartmentManagementInput()/@optA]: " + e.getLocalizedMessage());
+
+                    }
+
+                }
+
                 return false;
 
             case "b":
-
+                //TBD
                 return false;
 
             case "c":
+
+                System.out.println("Waiting for Numdep to delete ... ");
+                int depnum = reads.nextInt();
+                reads.nextLine();
+
+                try{
+
+                    this.qh.deleteDepartment(depnum);
+
+                }catch(SQLException e){
+
+                    System.out.println("[ERROR][switchDepartmentManagementInput()/@optC]: " + e.getLocalizedMessage());
+
+                }
 
                 return false;
 
             case "d":
 
+                try{
+
+                    String result = this.qh.getQueryAllDepartments();
+                    System.out.println(result);
+
+                }catch(SQLException e){
+
+                    System.out.println("[ERROR][switchDepartmentManagementInput()/@optD]: " + e.getLocalizedMessage());
+
+                }
+
                 return false;
 
             case "i":
 
+                try{
+
+                    String v = this.pedirNombreDep();
+                    String res = this.qh.getDepartmentByName(v);
+                    System.out.println(res);
+
+                }catch(SQLException e){
+
+                    System.out.println("[ERROR][switchDepartmentManagementInput()/@opti]: " + e.getLocalizedMessage());
+
+                }
+
                 return false;
 
             case "ii":
+
+                try{
+
+                    System.out.println("Waiting for Numdep to query by ... ");
+                    int n = reads.nextInt();
+                    reads.nextLine();
+
+                    String r = this.qh.getDepartmentByNum(n);
+                    System.out.println(r);
+
+                }catch(SQLException e){
+
+                    System.out.println("[ERROR][switchDepartmentManagementInput()/@optii]: " + e.getLocalizedMessage());
+
+                }
+
 
                 return false;
 
@@ -425,6 +499,36 @@ public class MenuBuilder {
         }
 
         return -1;
+
+    }
+
+    private String pedirNombreDep(){
+
+        Scanner reads = new Scanner(System.in);
+        String name = "";
+
+        try{
+
+            System.out.println(">>[WAITING FOR USER INPUT] Department name ... ");
+            name = reads.nextLine();
+
+            if(name.length() <= 15){
+
+                return name;
+
+            }else{
+
+                System.out.println("[ERROR][pedirNombreDep()/@stringFormat]: Value may be too long [<=15]");
+
+            }
+
+        }catch(Exception ex){
+
+            System.out.println("[ERROR][pedirNombreDep()/@stringFormat]: Input invalid");
+
+        }
+
+        return "";
 
     }
 

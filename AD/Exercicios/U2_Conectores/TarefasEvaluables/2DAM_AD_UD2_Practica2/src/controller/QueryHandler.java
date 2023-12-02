@@ -31,6 +31,22 @@ public class QueryHandler {
     private String deleteEmmployee = "delete from empleado where nif = ?";
     private PreparedStatement dEmployee;
 
+    //Department tampering methods
+    private String insertDepartment = "insert into departamento (Nombredep, Numdep) values (?,?)";
+    private PreparedStatement iDepartment;
+
+    private String queryAllDerpartments = "select * from departamento";
+    private PreparedStatement qAllDeps;
+
+    private String deleteDepartment = "delete from departamento where Numdep = ?";
+    private PreparedStatement dDepartment;
+
+    private String getDepartmentByName = "select * from departamento where Nombredep = ?";
+    private PreparedStatement qDepartmentByName;
+
+    private String getDepartmentByNum = "select * from departamento where Numdep = ?";
+    private PreparedStatement qDepartmentByNum;
+
 
     //Builder methods
     public QueryHandler() throws SQLException {
@@ -44,6 +60,11 @@ public class QueryHandler {
         this.qByLTSalary = con.prepareStatement(this.queryByLesserThanSalary);
         this.iEmployee = con.prepareStatement(this.insertEmployee);
         this.dEmployee = con.prepareStatement(this.deleteEmmployee);
+        this.iDepartment = con.prepareStatement(this.insertDepartment);
+        this.qAllDeps = con.prepareStatement(this.queryAllDerpartments);
+        this.dDepartment = con.prepareStatement(this.deleteDepartment);
+        this.qDepartmentByName  = con.prepareStatement(this.getDepartmentByName);
+        this.qDepartmentByNum = con.prepareStatement(this.getDepartmentByNum);
 
     }
 
@@ -156,6 +177,108 @@ public class QueryHandler {
             throw new SQLException("[ERROR][@deleteEmployee()] Delete failed: " + e.getLocalizedMessage());
 
         }
+
+    }
+
+    /*
+
+        ---Department tampering---
+
+     */
+    public void insertNewDepartment(String name, int num) throws SQLException{
+
+        try{
+
+            this.iDepartment.setString(1,name);
+            this.iDepartment.setInt(2,num);
+            this.iDepartment.execute();
+
+        }catch(SQLException e){
+
+            throw new SQLException("[ERROR][@insertNewDepartment] Insert failed " + e.getLocalizedMessage());
+
+        }
+
+    }
+
+    public String getQueryAllDepartments() throws SQLException {
+
+        String returnable = "";
+        ResultSet r = this.qAllDeps.executeQuery();
+
+        while(r.next()){
+
+            returnable = returnable + r.getString("Numdep") + "\t\t\t" +r.getString("Nombredep") + "\n";
+
+        }
+
+        return returnable;
+
+    }
+
+    public void deleteDepartment(int num) throws SQLException{
+
+        try{
+
+            this.dDepartment.setInt(1,num);
+            this.dDepartment.execute();
+
+        }catch(Exception e){
+
+            throw new SQLException(e.getLocalizedMessage());
+
+        }
+
+    }
+
+    public String getDepartmentByName(String name) throws SQLException{
+
+        String returnable = "";
+
+        try{
+
+            this.qDepartmentByName.setString(1,name);
+            ResultSet r = this.qDepartmentByName.executeQuery();
+
+            while(r.next()){
+
+                returnable = r.getString("Numdep") + "\t\t\t" + r.getString("Nombredep") + "\t\t\t" + r.getString("Numempdep");
+
+            }
+
+            return returnable;
+
+        }catch(Exception e){
+
+            throw new SQLException(e.getLocalizedMessage());
+
+        }
+
+    }
+
+    public String getDepartmentByNum(int n)throws SQLException{
+
+        String returnable = "";
+
+        try{
+
+            this.qDepartmentByNum.setInt(1,n);
+            ResultSet r = this.qDepartmentByNum.executeQuery();
+
+            while(r.next()){
+
+                returnable = r.getString("Numdep") + "\t\t\t" + r.getString("Nombredep") + "\t\t\t" + r.getString("Numempdep");
+
+            }
+
+            return returnable;
+
+        }catch(SQLException e){
+
+            throw new SQLException(e.getLocalizedMessage());
+
+        }
+
 
     }
 }
