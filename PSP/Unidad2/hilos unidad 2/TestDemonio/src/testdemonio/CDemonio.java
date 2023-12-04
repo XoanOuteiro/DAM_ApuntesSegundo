@@ -12,7 +12,8 @@ package testdemonio;
 public class CDemonio extends Thread {
     public CDemonio()
     {
-        setDaemon(true);setName("demoniobip");
+        setDaemon(true);
+        setName("demoniobip");
         start();
     }//constructor lleva método setDaemon
     public void run()
