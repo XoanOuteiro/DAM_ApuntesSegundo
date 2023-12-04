@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Recursos</string>
+    <string name="saludo">Hola mundo!</string>
+    <string name="insertar">Insertar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="consultar">Consultar</string>
+    <string name="modificar">Modificar</string>
+    <string name="otra_cosa">Otra cosa</string>
+    <string name="b1">B1</string>
+    <string name="b2">B2</string>
+</resources>

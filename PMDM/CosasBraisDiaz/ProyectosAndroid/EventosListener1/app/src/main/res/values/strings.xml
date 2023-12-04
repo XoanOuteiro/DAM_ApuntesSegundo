@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EventosListener1</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="a_veces">A veces</string>
+    <string name="pregunta">¿Que quieres hacer?</string>
+    <string name="NoSe">No sé</string>
+</resources>

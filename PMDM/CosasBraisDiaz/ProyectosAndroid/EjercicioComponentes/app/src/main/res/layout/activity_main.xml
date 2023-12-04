@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/Fondo">
+
+    <TextView
+        android:layout_width="@dimen/txtSize"
+        android:layout_height="wrap_content"
+        android:text="@string/conectar"
+        android:textColor="@color/colorLetra"
+        android:textAlignment="center"
+        android:padding="20dp"
+        android:textSize="@dimen/letra"/>
+    <EditText
+        android:layout_width="@dimen/txtSize"
+        android:layout_height="wrap_content"
+        android:hint="@string/usuario"
+        android:inputType="textCapWords"
+        android:padding="20dp"/>
+    <EditText
+        android:layout_width="@dimen/txtSize"
+        android:layout_height="wrap_content"
+        android:hint="@string/contrase_a"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:padding="20dp"/>
+    <Button
+        android:layout_width="@dimen/txtSize"
+        android:layout_height="wrap_content"
+        android:text="@string/iniciar_sesion"
+        android:textAlignment="center"
+        android:padding="@dimen/espacio"/>
+    <TextView
+        android:layout_width="@dimen/txtSize"
+        android:layout_height="wrap_content"
+        android:text="@string/olvidaste_la_contrase_a"
+        android:textColor="@color/colorLetra"
+        android:textAlignment="center"
+        android:padding="20dp"/>
+
+</LinearLayout>

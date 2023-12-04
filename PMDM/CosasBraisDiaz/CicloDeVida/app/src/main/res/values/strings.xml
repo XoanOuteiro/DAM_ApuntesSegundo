@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CicloDeVida</string>
+    <string name="lblTitulo">Introduce tu contraseña</string>
+    <string name="txtFin">Finalizar</string>
+</resources>

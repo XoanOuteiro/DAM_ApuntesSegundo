@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PruebaLinearLayout</string>
+    <string name="pregunta">Utilizas IExplorer?</string>
+    <string name="boton1">Si</string>
+    <string name="boton2">No</string>
+    <string name="boton3">A veces</string>
+</resources>

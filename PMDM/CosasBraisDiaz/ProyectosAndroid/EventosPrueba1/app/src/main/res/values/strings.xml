@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EventosPrueba1</string>
+    <string name="pregunta">¿Que quieres hacer?</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="a_veces">A veces</string>
+    <string name="textbtnNo">Has pulsado el botón No</string>
+    <string name="textbtnSi">Has pulsado el botón Si</string>
+    <string name="textbtnAVeces">Has pulsado el botón A Veces</string>
+</resources>

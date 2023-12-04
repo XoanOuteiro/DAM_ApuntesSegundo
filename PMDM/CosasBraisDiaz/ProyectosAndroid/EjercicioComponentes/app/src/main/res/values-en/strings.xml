@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EjercicioComponentes</string>
+    <string name="conectar">Connect</string>
+    <string name="usuario">User</string>
+    <string name="contrase_a">Password</string>
+    <string name="iniciar_sesion">Log In</string>
+    <string name="olvidaste_la_contrase_a">Did you forgot your password?</string>
+</resources>

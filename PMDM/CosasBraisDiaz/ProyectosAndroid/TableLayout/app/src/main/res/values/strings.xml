@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TableLayout</string>
+    <string name="pregunta">¿Utilizas IExplorer?</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="a_veces">A veces</string>
+</resources>

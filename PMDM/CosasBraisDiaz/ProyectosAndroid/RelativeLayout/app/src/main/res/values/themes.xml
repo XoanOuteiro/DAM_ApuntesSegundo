@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.RelativeLayout" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/cyan</item>
+        <item name="colorSecondary">#FFEB3B</item>
+    </style>
+
+    <style name="Theme.RelativeLayout" parent="Base.Theme.RelativeLayout" />
+</resources>

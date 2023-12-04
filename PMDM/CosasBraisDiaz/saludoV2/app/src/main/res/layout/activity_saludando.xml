@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/chkDespedida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Desea despedida?"/>
+    <RadioGroup
+        android:id="@+id/rgDespedida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/rbtAdios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adiós"/>
+        <RadioButton
+            android:id="@+id/rbtHastaPronto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hasta pronto"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finalizar"/>
+
+</LinearLayout>

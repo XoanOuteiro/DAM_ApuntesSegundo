@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manejo de Activity"/>
+
+    <Button
+        android:id="@+id/btnLlamadaAct2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Actividad 2"
+        android:onClick="onClickCambioActivity"/>
+
+    <Button
+        android:id="@+id/btnLlamadaSystemApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Calculadora"
+        android:onClick="onClickCambioActivity"/>
+
+    <Button
+        android:id="@+id/btnLlamadaSystemAppSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Settings"
+        android:onClick="onClickCambioActivity"/>
+
+    <!--Cambio de activity pasándole datos-->
+
+    <Button
+        android:id="@+id/btnLlamadaAct3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Actividad 3"
+        android:onClick="onClickCambioActivity"/>
+
+    <!--Cambio de activity pasándole un Bundle-->
+
+    <Button
+        android:id="@+id/btnLlamadaAct4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Actividad 4"
+        android:onClick="onClickCambioActivity"/>
+
+    <!--Escuchar a una activity-->
+
+    <Button
+        android:id="@+id/btnLlamadaEsperaRespuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Esperando Respuesta"
+        android:onClick="onClickCambioActivity"/>
+
+    <TextView
+        android:id="@+id/txtEscucha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnLlamadaOtraApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamada Otra App"
+        android:onClick="onClickCambioActivity"/>
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:columnCount="3"
+    android:rowCount="4">
+
+    <TextView
+        android:text="@string/saludo"
+        android:textSize="@dimen/texto_xhdpi"
+        android:padding="@dimen/padding_xhdpi"
+        android:layout_columnSpan="3"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:text="@string/insertar"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:text="@string/eliminar"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:text="@string/consultar"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:text="@string/modificar"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:text="@string/otra_cosa"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:text="B1"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"/>
+    <Button
+        android:text="B2"
+        android:layout_gravity="center|fill_horizontal"
+        android:layout_margin="5dp"
+        android:layout_columnSpan="3"/>
+
+</GridLayout>
