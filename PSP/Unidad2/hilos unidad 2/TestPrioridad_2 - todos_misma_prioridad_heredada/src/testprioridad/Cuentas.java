@@ -18,17 +18,16 @@ public class Cuentas extends Thread {
 
     public Cuentas(int n) {
         nCuentas = n; // número o cantidad de hilos Contador que se van a lanzar
-        setPriority((nCuentas + 2) % Thread.MAX_PRIORITY);
+//        setPriority((nCuentas + 2) % Thread.MAX_PRIORITY);
         // establecemos la prioridad de este hilo
         cuenta = new Contador[nCuentas]; // arrray de nCuentas elementos Contador
-        /*recorremos el array cuenta y  en cada elemento del mismo referenciamos 
-       * un hilo Contador, lanzamos cada hilo y le asignamos prioridad. */
+      /*recorremos el array cuenta y  en cada elemento del mismo referenciamos 
+         * un hilo Contador, lanzamos cada hilo y le asignamos prioridad. */
         for (int i = 0; i < nCuentas; i++) {
             cuenta[i] = new Contador();  // nuevo hilo, cada cuenta[i] es un hilo, objeto Contador
             //cada cuenta[i] hereda los métodos de la clase Thread
-            cuenta[i].setPriority((i + 3) % Thread.MAX_PRIORITY - 1);
+//            cuenta[i].setPriority((i + 3) % Thread.MAX_PRIORITY - 1);
         }
-        //hilos en estado nuevo
     }
     //constructor de la clase Cuentas 
     //metodo run() contiene tarea o código a ejecutar por los objetos definidos
@@ -44,10 +43,10 @@ public class Cuentas extends Thread {
         for (i = 0; i < nCuentas; i++) {
             cuenta[i].start();
         }
-        //hilos en estado preparado- en ejecución: estado runable
-        do {   //Mostrar de cada hilo su nombre, la prioridad y el estado atual de la cuenta 
+
+        do {   //Mostrar de cada hilo su nombre, la prioridad y el estado de la cuenta 
             for (i = 0; i < nCuentas; i++) {
-                System.out.print(cuenta[i].getName() + ", prioridad: " + cuenta[i].getPriority() + " "
+                System.out.println(cuenta[i].getName() + ", prioridad: " + cuenta[i].getPriority() + " "
                         + cuenta[i].cuenta + "  ");
             }
             System.out.print("\r");
@@ -62,11 +61,13 @@ public class Cuentas extends Thread {
             // siguen su ejecución.
             try {
                 int nMilisegundos = (int) (10 * Math.pow(2, nCuentas));
-                sleep(nMilisegundos);
+                sleep(0);
             } catch (InterruptedException e) {
             };
 
+
         } while (hayaHilosVivos);
+
 
     }//fin método run()
 }// fin clase Cuentas
