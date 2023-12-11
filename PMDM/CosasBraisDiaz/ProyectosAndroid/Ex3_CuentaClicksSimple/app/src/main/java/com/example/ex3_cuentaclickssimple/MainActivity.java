@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +22,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Anular el giro mediante código
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
         Log.i("ciclo","Ejecutando onCreate()");
         Log.i("ciclo","contador = " + num);
 
         //Inits
         this.status = findViewById(R.id.status);
         this.btnPulsa = findViewById(R.id.btnPulsa);
+
+        /*
+        if (savedInstanceState != null){
+            num = savedInstanceState.getInt("contador");
+
+            Log.i("ciclo","contador = " + num);
+
+            if (num == 1){
+                status.setText("Has pulsado " + num + " vez.");
+            } else {
+                status.setText("Has pulsado " + num + " veces.");
+            }
+
+        }
+        */
 
         //Asignación (método 3 (o 2.2) en ex2)
         btnPulsa.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /*================================================================
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -69,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             status.setText("Has pulsado " + num + " veces.");
         }
     }
+    ====================================================================*/
 
     @Override
     protected void onStart() {

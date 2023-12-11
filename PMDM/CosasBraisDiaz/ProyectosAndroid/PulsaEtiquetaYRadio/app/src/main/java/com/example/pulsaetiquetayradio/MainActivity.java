@@ -1,5 +1,6 @@
 package com.example.pulsaetiquetayradio;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -21,16 +22,43 @@ public class MainActivity extends AppCompatActivity {
     EditText etGrados;
     int rotation=0;
     int posicion=0;
+
+    boolean opcion = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         this.label = findViewById(R.id.label);
         this.rbtView = findViewById(R.id.rbtView);
         this.rbtImagen = findViewById(R.id.rbtImagen);
         this.btnAceptar = findViewById(R.id.btnAceptar);
         this.etGrados = findViewById(R.id.etGrados);
 
+        if (savedInstanceState != null){
+
+            posicion = savedInstanceState.getInt("posicion", posicion);
+            rotation = savedInstanceState.getInt("rotation", rotation);
+            opcion = savedInstanceState.getBoolean("opcion", opcion);
+
+            label.setRotation(posicion);
+
+            if (!opcion){
+
+                label.setText("");
+                label.setBackground(getDrawable(R.drawable.imagen_abc));
+
+            } else {
+
+                label.setText("Hola!");
+                label.setTextSize(getResources().getDimension(R.dimen.tamanhoLetra));
+                label.setBackgroundColor(getResources().getColor(R.color.purple));
+                label.setTextColor(getResources().getColor(R.color.red));
+
+            }
+
+        }
 
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
                     rotation = Integer.parseInt(etGrados.getText().toString());
                     label.setText("");
                     if (rbtView.isChecked()){
+                        opcion = true;
                         label.setText("Hola!");
                         label.setTextSize(getResources().getDimension(R.dimen.tamanhoLetra));
                         label.setBackgroundColor(getResources().getColor(R.color.purple));
                         label.setTextColor(getResources().getColor(R.color.red));
                     }
                     else if (rbtImagen.isChecked()){
+                        opcion = false;
                         label.setBackground(getDrawable(R.drawable.imagen_abc));
                     }
                 }
@@ -66,5 +96,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("posicion", posicion);
+        outState.putInt("rotation", rotation);
+        outState.putBoolean("opcion", opcion);
+
     }
 }
