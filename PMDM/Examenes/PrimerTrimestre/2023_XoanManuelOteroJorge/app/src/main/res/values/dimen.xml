@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="grosor_borde">22dp</dimen>
+    <dimen name="tamanhoLetra">25sp</dimen>
+
+</resources>

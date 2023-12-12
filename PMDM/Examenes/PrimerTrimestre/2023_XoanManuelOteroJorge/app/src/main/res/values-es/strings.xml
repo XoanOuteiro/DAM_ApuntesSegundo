@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Cálculo_IMC</string>
+    <string name="imc">IMC</string>
+    <string name="calcular_imc">Calcular IMC</string>
+    <string name="mas_informacion">Mas Información</string>
+    <string name="volver_atras">Volver atrás</string>
+    <string name="ok">Ok</string>
+    <string name="wiki_text">https://es.wikipedia\n.org/wiki/Indice_de\n_masa_corporal</string>
+</resources>
