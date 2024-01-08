@@ -35,7 +35,8 @@ public class C_AdquirirDatos extends Thread{
         int i=0;
        
         do{
-              i=m.calculos(getName());             
+            
+            i=m.calculos(getName());             
                 
         }while(i<m.tamano);
     }
