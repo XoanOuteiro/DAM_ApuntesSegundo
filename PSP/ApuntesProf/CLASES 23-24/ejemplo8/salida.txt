@@ -1,0 +1,27 @@
+Microsoft Windows [Versi¢n 10.0.19045.3086]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8>MKDIR NUEVO
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8>CD NUEVO
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8\NUEVO>ECHO CREO UN FICHERO EN CARPETA NUEVA > Mifichero.txt
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8\NUEVO>DIR
+ El volumen de la unidad K es recursosd
+ El n£mero de serie del volumen es: DC75-2506
+
+ Directorio de K:\id2da\PSP\CLASES 23-24\ejemplo8\NUEVO
+
+27/10/2023  14:24    <DIR>          .
+27/10/2023  14:24    <DIR>          ..
+27/10/2023  14:24                35 Mifichero.txt
+               1 archivos             35 bytes
+               2 dirs  7.274.632.650.752 bytes libres
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8\NUEVO>DIRR
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8\NUEVO>ECHO FIN COMANDOS 
+FIN COMANDOS 
+
+K:\id2da\PSP\CLASES 23-24\ejemplo8\NUEVO>
