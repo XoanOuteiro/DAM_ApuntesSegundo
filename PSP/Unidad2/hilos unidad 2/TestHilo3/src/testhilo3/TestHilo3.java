@@ -36,7 +36,8 @@ public class TestHilo3 {
        
         
         
-        contador.terminar();
+        
+        
         
         
     }

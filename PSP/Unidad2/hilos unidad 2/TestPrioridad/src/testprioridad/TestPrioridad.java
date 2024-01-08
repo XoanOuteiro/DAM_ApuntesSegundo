@@ -14,7 +14,7 @@ public class TestPrioridad {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int n=3;
+        int n=1000;
         Cuentas hiloCuentas=new Cuentas(n);
         hiloCuentas.start();
     }
