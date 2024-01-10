@@ -22,4 +22,12 @@
         android:text="Spinner"
         android:onClick="onClickBtnListados"/>
 
+    <Button
+        android:id="@+id/btn2_SpinnerAdaptador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner Adaptador"
+        android:onClick="onClickBtnListados"/>
+
+
 </LinearLayout>

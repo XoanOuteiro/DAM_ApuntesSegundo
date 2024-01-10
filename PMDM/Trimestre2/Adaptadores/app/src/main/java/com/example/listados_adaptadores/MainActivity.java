@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
                 i.setClass(this, Spinner_1_Activity.class);
                 break;
 
+            case R.id.btn2_SpinnerAdaptador:
+                i.setClass(this, Spinner_2_Activity.class);
+                break;
+
         }
 
         startActivity(i);
