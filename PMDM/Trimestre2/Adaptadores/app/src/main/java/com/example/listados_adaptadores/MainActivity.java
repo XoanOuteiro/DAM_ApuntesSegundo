@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
                 i.setClass(this, Spinner_2_Activity.class);
                 break;
 
+            case R.id.btn3_SpinnerAdaptadorRecurso:
+                i.setClass(this, Spinner_3_Activity.class);
+                break;
+
+            case R.id.btn4_SpinnerDinamico:
+                i.setClass(this,Spinner_4_Activity.class);
+                break;
         }
 
         startActivity(i);

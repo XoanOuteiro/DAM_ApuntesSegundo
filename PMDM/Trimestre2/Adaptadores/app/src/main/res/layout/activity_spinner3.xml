@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Spinner_2_Activity"
+    tools:context=".Spinner_3_Activity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SPINNER simple"/>
+        android:text="SPINNER con apdaptador + recurso"/>
 
     <Spinner
-        android:id="@+id/spPlanetas2"
+        android:id="@+id/spPlanetas3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-        <!-- Borramos la linea del adapter automático (entries)-->
 
 
 </LinearLayout>

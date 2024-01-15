@@ -29,5 +29,26 @@
         android:text="Spinner Adaptador"
         android:onClick="onClickBtnListados"/>
 
+    <Button
+        android:id="@+id/btn3_SpinnerAdaptadorRecurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBtnListados"
+        android:text="Spinner Adaptador + Recurso"/>
+
+    <Button
+        android:id="@+id/btn4_SpinnerDinamico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBtnListados"
+        android:text="Spinner Dinamico"/>
+
+    <Button
+        android:id="@+id/btn5_SpinnerDinamico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBtnListados"
+        android:text="Spinner Dinamico"/>
+
 
 </LinearLayout>
