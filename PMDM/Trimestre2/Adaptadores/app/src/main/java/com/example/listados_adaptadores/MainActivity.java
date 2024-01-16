@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn4_SpinnerDinamico:
                 i.setClass(this,Spinner_4_Activity.class);
                 break;
+
+            case R.id.btn5_SpinnerDinamico:
+                i.setClass(this, Spinner_5_Activity.class);
+                break;
         }
 
         startActivity(i);

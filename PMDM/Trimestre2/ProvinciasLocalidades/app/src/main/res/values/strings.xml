@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ProvinciasLocalidades</string>
+    <string name="localidad">Localidad:</string>
+    <string name="provincias_y_localidades">Provincias Y Localidades</string>
+    <string name="provincia">Provincia:</string>
+</resources>
