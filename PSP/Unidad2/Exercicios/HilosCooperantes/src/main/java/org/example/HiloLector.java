@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -76,7 +78,19 @@ public class HiloLector extends Thread{
                    haría la operación mucho mas lenta
 
                  */
+                /*
 
+                //Esta opcion testada usa una expresion lambda para ordenar tras añadir el elemento
+                //el problema esta en que añade elementos duplicados a la lista
+
+                synchronized (this.thList){
+
+                    this.thList.add(tuple);
+                    Collections.sort(this.thList, Comparator.comparing(a -> a[1]));
+
+                }
+
+                 */
 
             }
 
