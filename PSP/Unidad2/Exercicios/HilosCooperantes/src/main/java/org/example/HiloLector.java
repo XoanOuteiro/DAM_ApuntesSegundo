@@ -81,7 +81,6 @@ public class HiloLector extends Thread{
                 /*
 
                 //Esta opcion testada usa una expresion lambda para ordenar tras añadir el elemento
-                //el problema esta en que añade elementos duplicados a la lista
 
                 synchronized (this.thList){
 
@@ -92,6 +91,15 @@ public class HiloLector extends Thread{
 
                  */
 
+                //Esto es estrictamente lo que pide el ejercicio
+                int pos = this.findIndex(tuple[this.POS_INICIAL]);
+
+                synchronized (this.thList){
+
+                    this.thList.add(pos,tuple);
+
+                }
+
             }
 
         }catch(Exception ex){
@@ -99,6 +107,28 @@ public class HiloLector extends Thread{
             System.out.println("!> FATAL: Error imprevisto en la ejecución de un hilo: " + ex.getLocalizedMessage() + " " + ex.getClass().toString());
 
         }
+
+    }
+
+    /**
+     *
+     * Devuelve el indice en el que deberia estar el valor en caso
+     * de estar en la lista de forma alfabetica
+     *
+     * A quien este leyendo esto, atento, estas a punto de ver la forma
+     * mas vaga de encontrar indices alfabeticos
+     *
+     * @return int
+     */
+    private int findIndex(String s){
+
+        ArrayList<String[]> thListClone = new ArrayList<>(this.thList); // Lo clonamos para no ordenarlo sin querer (si)
+        String[] tempArr = {"",s,""};                                   //Creamos un array que solo tiene la inicial
+        thListClone.add(tempArr);                                       //Metemos el array en la lista
+        Collections.sort(this.thList, Comparator.comparing(a -> a[this.POS_INICIAL]));  //Lo sorteamos
+
+        return thListClone.indexOf(tempArr); //Recuperamos el indice en el que se añadiria
+        //NO COPIAR ESTO EN UN EXAMEN POR FAVOR
 
     }
 }
