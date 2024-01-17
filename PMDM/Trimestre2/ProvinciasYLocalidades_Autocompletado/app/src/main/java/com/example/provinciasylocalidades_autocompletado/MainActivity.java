@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.containerLocalidades.setVisibility(View.GONE);
 
+        this.contentsLocalidades = new ArrayList<>();
 
         this.adaptadorProvincias = new ArrayAdapter<>(this , android.R.layout.simple_spinner_dropdown_item , getResources().getStringArray(R.array.provincias));
         this.atxtProvincia.setAdapter(adaptadorProvincias);
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         this.atxtProvincia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                switchInput(atxtProvincia.getText().toString());
 
             }
         });
