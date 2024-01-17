@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Listados_Adaptadores"
         tools:targetApi="31">
         <activity
+            android:name=".ListView_3_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ListView_2_Activity"
             android:exported="false" />
         <activity

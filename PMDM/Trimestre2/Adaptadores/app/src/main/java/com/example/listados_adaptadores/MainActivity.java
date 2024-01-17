@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn2_listView:
                 i.setClass(this, ListView_2_Activity.class);
                 break;
+
+            case R.id.btn3_listView:
+                i.setClass(this, ListView_3_Activity.class);
+                break;
         }
 
         startActivity(i);
