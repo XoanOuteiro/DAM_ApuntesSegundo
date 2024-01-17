@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.mycompany.hibernatemaven.actor" table="actor">
+        <id name="actor_id" type="int">
+            <column name="actor_id" />
+            <generator class="increment" />
+        </id>
+        <property name="first_name" type="java.lang.String">
+            <column name="first_name" />
+        </property>
+        <property name="last_name" type="java.lang.String">
+            <column name="last_name" />
+        </property>
+        <property name="last_update" type="timestamp">
+        	<column name="last_update" />
+        </property>
+    </class>
+</hibernate-mapping>

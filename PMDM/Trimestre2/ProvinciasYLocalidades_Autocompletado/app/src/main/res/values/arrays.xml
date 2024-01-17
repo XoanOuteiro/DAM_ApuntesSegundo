@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="provincias">
+        <item>A Coruña</item>
+        <item>Lugo</item>
+        <item>Pontevedra</item>
+        <item>Ourense</item>
+        <item>Almería</item>
+        <item>Palencia</item>
+        <item>Lérida</item>
+        <item>Albacete</item>
+        <item>Alicante</item>
+        <item>León</item>
+        <item>La Rioja</item>
+        <item>Ourense</item>
+    </string-array>
+    <string-array name="localidades_pont">
+        <item>Pontevedra</item>
+        <item>Pontecaldelas</item>
+        <item>Vigo</item>
+        <item>Arcade</item>
+        <item>Forcarei</item>
+    </string-array>
+    <string-array name="localidades_ou">
+        <item>Ourense</item>
+        <item>O Carballiño</item>
+        <item>Ribadavia</item>
+        <item>Melón</item>
+        <item>Castrelo de Miño</item>
+    </string-array>
+    <string-array name="localidades_lu">
+        <item>Lugo</item>
+        <item>Monforte</item>
+        <item>Foz</item>
+    </string-array>
+    <string-array name="localidades_cor">
+        <item>A Coruña</item>
+        <item>Ferrol</item>
+        <item>Boiro</item>
+    </string-array>
+
+</resources>
