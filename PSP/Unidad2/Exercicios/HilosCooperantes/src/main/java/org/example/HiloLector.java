@@ -14,6 +14,8 @@ import java.util.Comparator;
  * (pero sincronizada a otros hilos) a leer información
  * de su fichero asignado para despúes añadirlo al
  * recurso compartido
+ * 
+ * @author XoanOuteiro
  *
  */
 public class HiloLector extends Thread{
@@ -90,10 +92,20 @@ public class HiloLector extends Thread{
                 }
 
                  */
-
-                //Esto es estrictamente lo que pide el ejercicio
+                
+                /*
+                    Este metodo, al crear un clon de la lista para evitar
+                    la modificacion concurrente no necesariamente devuelve el
+                    indice alfabetico real, ya que la lista original pudo ser 
+                    modificada por otro hilo
+                
+                    Pero el enunciado da a entender que la busqueda del indice
+                    deberia ser una operacion asincrona, con lo que debe funcionar
+                    siempre a partir de un clon de la lista, este problema solo se puede
+                    evitar declarando esta linea como sincrona a thList
+                */
                 int pos = this.findIndex(tuple[this.POS_INICIAL]);
-
+                              
                 synchronized (this.thList){
 
                     this.thList.add(pos,tuple);
@@ -122,10 +134,10 @@ public class HiloLector extends Thread{
      */
     private int findIndex(String s){
 
-        ArrayList<String[]> thListClone = new ArrayList<>(this.thList); // Lo clonamos para no ordenarlo sin querer (si)
-        String[] tempArr = {"",s,""};                                   //Creamos un array que solo tiene la inicial
-        thListClone.add(tempArr);                                       //Metemos el array en la lista
-        Collections.sort(this.thList, Comparator.comparing(a -> a[this.POS_INICIAL]));  //Lo sorteamos
+        ArrayList<String[]> thListClone = new ArrayList<>(this.thList);     // Lo clonamos para no ordenarlo sin querer (si)
+        String[] tempArr = {"",s,""};                                         //Creamos un array que solo tiene la inicial
+        thListClone.add(tempArr);                                           //Metemos el array en la lista
+        Collections.sort(thListClone, Comparator.comparing(a -> a[this.POS_INICIAL]));  //Lo sorteamos
 
         return thListClone.indexOf(tempArr); //Recuperamos el indice en el que se añadiria
         //NO COPIAR ESTO EN UN EXAMEN POR FAVOR

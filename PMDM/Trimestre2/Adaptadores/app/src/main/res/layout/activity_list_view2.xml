@@ -9,4 +9,16 @@
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List view adapter"/>
+
+    <ListView
+        android:id="@+id/lv2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+
 </LinearLayout>
