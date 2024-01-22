@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 
 /**
  *
@@ -22,20 +23,11 @@ public class HiloLector extends Thread{
 
     /*
 
-        ---CONSTANTES DE INDEXADO
-
-     */
-    private final int POS_LONGITUD = 0;
-    private final int POS_INICIAL = 1;
-    private final int POS_CADENA = 2;
-
-    /*
-
         ---ATRIBUTOS DE CLASE
 
      */
     private File file;
-    private ArrayList<String[]> thList; // TODAS LAS MODIFICACIONES A ESTE RECURSO SON CRITICAS
+    private LinkedList<Persona> thList; // TODAS LAS MODIFICACIONES A ESTE RECURSO SON CRITICAS
     private BufferedReader br;
 
     /*
@@ -43,7 +35,7 @@ public class HiloLector extends Thread{
         ---METODOS DE INSTANCIADO
 
      */
-    public HiloLector(File f, ArrayList<String[]> thList) throws FileNotFoundException {
+    public HiloLector(File f, LinkedList<Persona> thList) throws FileNotFoundException {
 
         this.file = f;
         this.thList = thList;
@@ -64,12 +56,11 @@ public class HiloLector extends Thread{
             String line;
             while ((line = br.readLine()) != null) {
 
-                //Recolección de valores para tupla
-                int longitud = line.length();
+                //Recolección de valores para clase persona
                 char inicial = line.charAt(0);
 
-                //Creación de tupla
-                String[] tuple = {Integer.toString(longitud),Character.toString(inicial),line};
+                //Creación de persona
+                Persona pers = new Persona(inicial, line);
 
                 //Comprobacion de orden alfabetico
                 /*
@@ -107,9 +98,9 @@ public class HiloLector extends Thread{
                 
                               
                 synchronized (this.thList){
-
-                    int pos = this.findIndex(tuple[this.POS_INICIAL]);
-                    this.thList.add(pos,tuple);
+                    
+                    int pos = this.findIndex(pers.getInicial());
+                    this.thList.add(pos,pers);
 
                 }
 
@@ -133,15 +124,13 @@ public class HiloLector extends Thread{
      *
      * @return int
      */
-    private int findIndex(String s){
+    private int findIndex(char c){
 
-        ArrayList<String[]> thListClone = new ArrayList<>(this.thList);     // Lo clonamos para no ordenarlo sin querer (si)
-        String[] tempArr = {"",s,""};                                         //Creamos un array que solo tiene la inicial
-        thListClone.add(tempArr);                                           //Metemos el array en la lista
-        Collections.sort(thListClone, Comparator.comparing(a -> a[this.POS_INICIAL]));  //Lo sorteamos
-
-        return thListClone.indexOf(tempArr); //Recuperamos el indice en el que se añadiria
-        //NO COPIAR ESTO EN UN EXAMEN POR FAVOR
+        LinkedList<Persona> thListClone = new LinkedList<>(this.thList);
+        Persona tempPerson = new Persona(c, ""); 
+        thListClone.add(tempPerson);
+        Collections.sort(thListClone, Comparator.comparing(Persona::getInicial));
+        return thListClone.indexOf(tempPerson);
 
     }
 }
