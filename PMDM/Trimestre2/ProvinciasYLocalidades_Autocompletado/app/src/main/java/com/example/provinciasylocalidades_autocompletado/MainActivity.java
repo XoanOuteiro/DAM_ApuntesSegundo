@@ -50,6 +50,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Listeners
+        this.spLocalidades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(MainActivity.this, "Provincia: " + atxtProvincia.getText().toString() + "\nLocalidad: " + spLocalidades.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         this.atxtProvincia.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
