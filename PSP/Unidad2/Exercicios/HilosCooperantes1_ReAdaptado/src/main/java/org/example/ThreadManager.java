@@ -176,31 +176,5 @@ public class ThreadManager {
             l.start();
 
         }
-
     }
-
-    /**
-     *
-     * Devuelve true cuando todos los hilos de la lista threads terminen
-     * su tarea (isAlive = false)
-     *
-     * @return true si los hilos han terminado su tarea, false si algun hilo sigue activo
-     */
-    private boolean taskDone(){
-
-        for(HiloLector l : this.threads){
-
-            if(l.isAlive()){    // Si CUALQUIER hilo esta vivo podemos asumir que el proceso continua
-
-                return false;
-
-            }
-
-        } //En este punto todos los hilos han sido testados
-
-        return true;
-
-    }
-
-
 }
