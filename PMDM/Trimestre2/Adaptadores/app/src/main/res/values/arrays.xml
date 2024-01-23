@@ -11,4 +11,15 @@
         <item>Neptuno</item>
     </string-array>
 
+    <string-array name="icons">
+        <item>@drawable/mercurio</item>
+        <item>@drawable/venus</item>
+        <item>@drawable/tierra</item>
+        <item>@drawable/marte</item>
+        <item>@drawable/jupiter</item>
+        <item>@drawable/saturno</item>
+        <item>@drawable/urano</item>
+        <item>@drawable/neptuno</item>
+    </string-array>
+
 </resources>

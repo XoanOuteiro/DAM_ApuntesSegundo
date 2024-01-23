@@ -78,5 +78,19 @@
         android:text="List View Dinamico"
         android:onClick="onClickBtnListados"/>
 
+    <Button
+        android:id="@+id/btn5_lisView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List View Personalizado"
+        android:onClick="onClickBtnListados"/>
+
+    <Button
+        android:id="@+id/btn6_lisView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List View Personalizada typed array"
+        android:onClick="onClickBtnListados"/>
+
 
 </LinearLayout>
