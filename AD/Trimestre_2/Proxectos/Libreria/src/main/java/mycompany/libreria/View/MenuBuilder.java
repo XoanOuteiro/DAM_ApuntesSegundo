@@ -1,6 +1,9 @@
 
 package mycompany.libreria.View;
 
+import mycompany.libreria.API.Actuator;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -10,10 +13,12 @@ import java.util.Scanner;
 public class MenuBuilder {
     
     private Scanner reads;
+    private Actuator act;
     
     public MenuBuilder(){
         
         this.reads = new Scanner(System.in);
+        this.act = new Actuator();
         
     }
     
@@ -25,7 +30,7 @@ public class MenuBuilder {
                         + "1 -> Inserción\n"
                         + "2 -> Borrado\n"
                         + "3 -> Consultar\n"
-                        + "4 -> Salir\n");
+                        + "0 -> Salir\n");
 
                 opcion = reads.nextLine();
 
@@ -44,7 +49,7 @@ public class MenuBuilder {
 
                         iniciarConsulta();
                         break;
-                    case "4":
+                    case "0":
 
                         fin = true;
                         break;
@@ -68,19 +73,35 @@ public class MenuBuilder {
                 System.out.println("\nEscoge una opcion:\n"
                         + "1 -> Inserción Autor\n"
                         + "2 -> Insercion Libro\n"
-                        + "3 -> Atrás\n");
+                        + "0 -> Atrás\n");
 
                 opcion = reads.nextLine();
 
                 switch (opcion) {
                     case "1":
-                        
+                        try {
+
+                            this.solicitateAutor();
+
+                        }catch(InputMismatchException ex){
+
+                            System.out.println(ex.getLocalizedMessage());
+
+                        }
                         break;
 
                     case "2":
+                        try {
 
+                            this.solicitateLibro();
+
+                        }catch(InputMismatchException ex){
+
+                            System.out.println(ex.getLocalizedMessage());
+
+                        }
                         break;
-                    case "3":
+                    case "0":
 
                         fin = true;
                         break;
@@ -101,7 +122,7 @@ public class MenuBuilder {
                 System.out.println("\nEscoge una opcion:\n"
                         + "1 -> Borrado Autor\n"
                         + "2 -> Borrado Libro\n"
-                        + "3 -> Atrás\n");
+                        + "0 -> Atrás\n");
 
                 opcion = reads.nextLine();
 
@@ -113,7 +134,7 @@ public class MenuBuilder {
                     case "2":
 
                         break;
-                    case "3":
+                    case "0":
 
                         fin = true;
                         break;
@@ -137,7 +158,7 @@ public class MenuBuilder {
                         + "2 -> Por autor\n"
                         + "3 -> Todos los libros\n"
                         + "4 -> Todos los autores\n"
-                        + "5 -> Atrás");
+                        + "0 -> Atrás");
 
                 opcion = reads.nextLine();
 
@@ -155,7 +176,7 @@ public class MenuBuilder {
                     case "4":
                         
                         break;
-                    case "5":
+                    case "0":
                         
                         fin = true;
                         break;
