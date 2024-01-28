@@ -16,17 +16,17 @@ public class Libro {
      */
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="actor_id", nullable=false, unique=true, length=11)
+    @Column(name="IdLibro", nullable=false, unique=true, length=11)
     private int idlibro;
 
-    @Column(name="Nombre", nullable=false, length=25)
+    @Column(name="Titulo", nullable=false, length=25)
     private String titulo;
 
-    @Column(name="Nombre", nullable=false)
+    @Column(name="Precio", nullable=false)
     private float precio;
 
     @OneToOne
-    @JoinColumn(name = "DniAutor")
+    @JoinColumn(name = "autor", referencedColumnName="dniautor")
     private Autor autor;
 
     /*

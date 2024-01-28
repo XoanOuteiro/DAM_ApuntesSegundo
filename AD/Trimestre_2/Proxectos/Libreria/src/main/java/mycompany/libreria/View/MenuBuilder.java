@@ -2,6 +2,8 @@
 package mycompany.libreria.View;
 
 import mycompany.libreria.API.Actuator;
+import mycompany.libreria.Controller_Model.Autor;
+import mycompany.libreria.Controller_Model.Libro;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -63,6 +65,7 @@ public class MenuBuilder {
         } while (!fin);
 
         System.out.println("\nFin de la ejecucion");
+        this.act.endSession();
 
     }
 
@@ -81,7 +84,7 @@ public class MenuBuilder {
                     case "1":
                         try {
 
-                            this.solicitateAutor();
+                            this.insertAutor();
 
                         }catch(InputMismatchException ex){
 
@@ -93,7 +96,7 @@ public class MenuBuilder {
                     case "2":
                         try {
 
-                            this.solicitateLibro();
+                            this.insertLibro();
 
                         }catch(InputMismatchException ex){
 
@@ -189,5 +192,61 @@ public class MenuBuilder {
 
         } while (!fin);
     }
+
+    /*
+
+        ---Private requests methods
+
+     */
+    private void insertAutor(){
+
+        try{
+
+            System.out.println(">>Waiting for [DNI_AUTOR] ... ");
+            String dni = reads.nextLine();
+            System.out.println(">>Waiting for [NOMBRE] ... ");
+            String nombre = reads.nextLine();
+            System.out.println(">>Waiting for [NACIONALIDAD] ... ");
+            String nacionalidad = reads.nextLine();
+
+            this.act.insert(new Autor(dni,nombre,nacionalidad));
+
+
+        }catch(Exception ex){
+
+            throw new InputMismatchException("ERROR: Valores invalidos : " + ex.getLocalizedMessage());
+
+        }
+
+    }
     
+    private void insertLibro(){
+
+        try{
+
+            System.out.println(">>Waiting for [TITULO] ... ");
+            String titulo = reads.nextLine();
+            System.out.println(">>Waiting for [PRECIO] ... ");
+            float precio = reads.nextFloat();reads.nextLine();
+            System.out.println(">>Waiting for [DNI_AUTOR] ... ");
+            String dniAutor = reads.nextLine();
+            Autor autor = this.act.getAutorByDNI(dniAutor);
+
+            if(autor != null) {
+
+                this.act.insert(new Libro(titulo, precio, autor));
+
+            }else{
+
+                throw new InputMismatchException("Ese autor no existe.");
+
+            }
+
+        }catch(Exception ex){
+
+            throw new InputMismatchException("ERROR: Valores invalidos : " + ex.getLocalizedMessage());
+
+        }
+        
+    }
 }

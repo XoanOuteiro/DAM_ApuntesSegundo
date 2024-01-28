@@ -15,5 +15,6 @@
 		
 		<!-- Mapping with model class containing annotations -->
 		<mapping class="mycompany.libreria.Controller_Model.Autor"/>
+		<mapping class="mycompany.libreria.Controller_Model.Libro"/>
 	</session-factory>
 </hibernate-configuration>

@@ -1,6 +1,9 @@
 package mycompany.libreria.API;
 
 import java.util.List;
+
+import mycompany.libreria.Controller_Model.Autor;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class Actuator {
@@ -11,6 +14,8 @@ public class Actuator {
 
      */
     private Session s;
+    private final String AUTORES_CLASS = "mycompany.libreria.Controller_Model.Autor";
+    private final String LIBROS_CLASS = "mycompany.libreria.Controller_Model.Libro";
 
 
     /*
@@ -18,7 +23,10 @@ public class Actuator {
         ---Builder Methods
 
      */
-    public Actuator(){};
+    public Actuator() {
+    }
+
+    ;
 
 
     /*
@@ -26,19 +34,40 @@ public class Actuator {
         ---Actuator Methods
 
      */
-    public void endSession(){
-        
+    public void endSession() {
+
         HibernateUtil.getSessionFactory().close();
-        
+
     }
-    
-    public void insert(Object obj){
+
+    public void insert(Object obj) {
+
+        try {
+            this.startSession();
+
+            this.s.beginTransaction();
+            this.s.save(obj);
+            this.s.getTransaction().commit();
+            
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+
+        }
+
+    }
+
+    public Autor getAutorByDNI(String dni) {
 
         this.startSession();
+        
+        String hql = "from Autor where DniAutor = :dni";
 
-        this.s.beginTransaction();
-        this.s.save(obj);
-        this.s.getTransaction().commit();
+        Query q = this.s.createQuery(hql);
+        q.setParameter("dni", dni);
+        Autor res = (Autor) q.uniqueResult();
+
+        return res;
 
     }
 
@@ -47,9 +76,12 @@ public class Actuator {
         ---Private methods
 
      */
-    private void startSession(){
+    private void startSession() {
 
-        this.s = HibernateUtil.getSessionAnnotationFactory().getCurrentSession();
+        if (this.s == null || !this.s.isOpen()) {
+            this.s = HibernateUtil.getSessionAnnotationFactory().openSession();
+        }
 
     }
+
 }

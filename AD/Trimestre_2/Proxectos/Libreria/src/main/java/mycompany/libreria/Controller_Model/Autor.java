@@ -1,4 +1,3 @@
-
 package mycompany.libreria.Controller_Model;
 
 import java.io.Serializable;
@@ -16,8 +15,9 @@ import javax.persistence.UniqueConstraint;
  * @author XoanOuteiro
  */
 @Entity
-@Table(name="autores", 
-	   uniqueConstraints={@UniqueConstraint(columnNames={"DniAutor"})})
+@Table(name = "autores",
+        uniqueConstraints = {
+            @UniqueConstraint(columnNames = {"DniAutor"})})
 public class Autor implements Serializable {
 
     /*
@@ -26,36 +26,35 @@ public class Autor implements Serializable {
 
      */
     @Id
-    @Column(name="DniAutor", nullable=false, unique=true, length=9)
-    private String dniautor;
+    @Column(name = "DniAutor", nullable = false, unique = true, length = 9)
+    public String dniautor;
 
-    @Column(name="Nombre", nullable=false, length=25)
+    @Column(name = "Nombre", nullable = false, length = 25)
     private String nombre;
 
-    @Column(name="Nacionalidad", nullable=false, length=25)
+    @Column(name = "Nacionalidad", nullable = false, length = 25)
     private String nacionalidad;
 
     /*
 
         ---Builder methods
 
-    */
-
+     */
     public Autor(String dniautor, String nombre, String nacionalidad) {
         this.dniautor = dniautor;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
     }
-    
-    public Autor(){
-        
+
+    public Autor() {
+
     }
 
     /*
 
             ---Getters & Setters
 
-        */
+     */
     public String getDniautor() {
         return dniautor;
     }
@@ -63,5 +62,5 @@ public class Autor implements Serializable {
     public void setDniautor(String dniautor) {
         this.dniautor = dniautor;
     }
-    
+
 }
