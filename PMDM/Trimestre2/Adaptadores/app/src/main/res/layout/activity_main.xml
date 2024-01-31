@@ -99,5 +99,12 @@
         android:text="Ejercicio array Luli"
         android:onClick="onClickBtnListados"/>
 
+    <Button
+        android:id="@+id/btn8_lisView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListView Optimizada"
+        android:onClick="onClickBtnListados"/>
+
 
 </LinearLayout>

@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn7_lisView:
                 i.setClass(this, ListView_7_Activity.class);
                 break;
+
+            case R.id.btn8_lisView:
+                i.setClass(this, ListView_8_Optimizada.class);
+                break;
         }
 
         startActivity(i);
