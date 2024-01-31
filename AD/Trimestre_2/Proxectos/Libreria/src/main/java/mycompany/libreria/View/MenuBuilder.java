@@ -131,10 +131,38 @@ public class MenuBuilder {
 
                 switch (opcion) {
                     case "1":
-                        
+
+                        try{
+
+                            System.out.println(">>Waiting for [DNI_AUTOR] ... ");
+                            String dniAutor = reads.nextLine();
+
+                            Autor a = this.act.getAutorByDNI(dniAutor);
+                            this.act.delete(a);
+
+                        }catch(InputMismatchException ex){
+
+                            System.out.println(ex.getLocalizedMessage());
+
+                        }
+
                         break;
 
                     case "2":
+
+                        try{
+
+                            System.out.println(">>Waiting for [ID_LIBRO] ... ");
+                            int idLibro = reads.nextInt(); reads.nextLine();
+
+                            Libro a = this.act.getLibroByID(idLibro);
+                            this.act.delete(a);
+
+                        }catch(InputMismatchException ex){
+
+                            System.out.println(ex.getLocalizedMessage());
+
+                        }
 
                         break;
                     case "0":

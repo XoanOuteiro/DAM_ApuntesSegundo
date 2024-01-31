@@ -3,6 +3,7 @@ package mycompany.libreria.API;
 import java.util.List;
 
 import mycompany.libreria.Controller_Model.Autor;
+import mycompany.libreria.Controller_Model.Libro;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -57,6 +58,23 @@ public class Actuator {
 
     }
 
+    public void delete(Object obj){
+
+        try{
+
+            this.startSession();
+            this.s.beginTransaction();
+            this.s.delete(obj);
+            this.s.getTransaction().commit();
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+
+        }
+
+    }
+
     public Autor getAutorByDNI(String dni) {
 
         this.startSession();
@@ -66,6 +84,20 @@ public class Actuator {
         Query q = this.s.createQuery(hql);
         q.setParameter("dni", dni);
         Autor res = (Autor) q.uniqueResult();
+
+        return res;
+
+    }
+
+    public Libro getLibroByID(int id){
+
+        this.startSession();
+
+        String hql = "from Libro where IdLibro = :id";
+
+        Query q = this.s.createQuery(hql);
+        q.setParameter("id", id);
+        Libro res = (Libro) q.uniqueResult();
 
         return res;
 
