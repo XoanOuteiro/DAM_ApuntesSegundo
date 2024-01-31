@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class AdapatadorPersonalizado3 extends ArrayAdapter {
 
     private Activity activity;
-    private ArrayList planetas;
+    private ArrayList<Planeta> planetas;
     private int layout_personalizado;
 
 
@@ -53,8 +53,8 @@ public class AdapatadorPersonalizado3 extends ArrayAdapter {
 
         }
 
-        holder.tvPlanetas.setText(planetas.get(position).getNomrePlaneta());
-        holder.imgPlanetas.setImageResource(planetas.get(position).getIdFotoPlaneta());
+        holder.tvPlanetas.setText(planetas.get(position).getNombre());
+        holder.imgPlanetas.setImageResource(planetas.get(position).getIdFoto());
 
         return fila;
 
