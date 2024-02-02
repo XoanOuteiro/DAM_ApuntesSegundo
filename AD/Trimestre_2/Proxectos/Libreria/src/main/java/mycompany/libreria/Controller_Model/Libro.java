@@ -42,6 +42,18 @@ public class Libro {
 
     }
 
+    /*
+
+        ---Public Method
+
+     */
+    public String toString(){
+
+        return "Titulo: " + this.titulo + " \tAutor: " + this.autor.getNombre() + " \tPrecio: " + this.precio;
+
+    }
+
+
     public Libro(){}
 
     /*

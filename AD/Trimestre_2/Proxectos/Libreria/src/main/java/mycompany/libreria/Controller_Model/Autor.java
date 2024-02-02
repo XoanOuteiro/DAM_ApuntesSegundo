@@ -63,4 +63,7 @@ public class Autor implements Serializable {
         this.dniautor = dniautor;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 }

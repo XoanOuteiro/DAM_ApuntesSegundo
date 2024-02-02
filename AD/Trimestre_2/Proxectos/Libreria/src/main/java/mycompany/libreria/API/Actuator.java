@@ -1,5 +1,6 @@
 package mycompany.libreria.API;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mycompany.libreria.Controller_Model.Autor;
@@ -89,6 +90,28 @@ public class Actuator {
 
     }
 
+    public Autor getAutorByName(String name) {
+
+        try {
+            this.startSession();
+
+            String hql = "from Autor where Nombre = :name";
+
+            Query q = this.s.createQuery(hql);
+            q.setParameter("name", name);
+            Autor res = (Autor) q.uniqueResult();
+
+            return res;
+        }catch (Exception ex){
+
+            ex.printStackTrace();
+
+        }
+
+        return null;
+
+    }
+
     public Libro getLibroByID(int id){
 
         this.startSession();
@@ -100,6 +123,88 @@ public class Actuator {
         Libro res = (Libro) q.uniqueResult();
 
         return res;
+
+    }
+
+    public Libro getLibroByTitle(String title){
+
+        this.startSession();
+
+        String hql = "from Libro where Titulo = :title";
+
+        Query q = this.s.createQuery(hql);
+        q.setParameter("title", title);
+        Libro res = (Libro) q.uniqueResult();
+
+        return res;
+
+
+    }
+
+    public ArrayList<Libro> getLibroByAutor(Autor autor){
+
+        try {
+
+            this.startSession();
+
+            String hql = "from Libro where autor = :autor";
+            Query query = this.s.createQuery(hql);
+            query.setParameter("autor", autor);
+
+            List<Libro> libros = query.list();
+            return new ArrayList<>(libros);
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+
+        }
+
+        return null;
+
+    }
+
+    public ArrayList<Libro> getLibros(){
+
+        try{
+
+            this.startSession();
+
+            String hql = "from Libro";
+            Query query = this.s.createQuery(hql);
+
+            List<Libro> libros = query.list();
+            return new ArrayList<>(libros);
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+
+        }
+
+        return null;
+
+    }
+
+    public ArrayList<Autor> getAutors(){
+
+        try{
+
+            this.startSession();
+
+            String hql = "from Autor";
+            Query query = this.s.createQuery(hql);
+
+            List<Autor> a = query.list();
+            return new ArrayList<>(a);
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+
+        }
+
+        return null;
 
     }
 

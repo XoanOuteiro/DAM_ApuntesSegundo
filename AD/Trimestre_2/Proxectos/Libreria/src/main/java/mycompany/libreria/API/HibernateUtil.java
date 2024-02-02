@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import mycompany.libreria.Controller_Model.Autor;
 import mycompany.libreria.Controller_Model.Libro;
+import mycompany.libreria.Controller_Model.Telefono;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -84,7 +85,8 @@ public class HibernateUtil {
 		//we can set mapping file or class with annotation
 		//addClass(Employee1.class) will look for resource
 		configuration.addAnnotatedClass(Autor.class);
-                configuration.addAnnotatedClass(Libro.class);
+        configuration.addAnnotatedClass(Libro.class);
+			configuration.addAnnotatedClass(Telefono.class);
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
     	System.out.println("Hibernate Java Config serviceRegistry created");
     	
