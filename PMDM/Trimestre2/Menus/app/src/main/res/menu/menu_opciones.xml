@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/opc_item1" android:title="Opción 1" android:icon="@drawable/marte" app:showAsAction="ifRoom"/>
+    <item android:id="@+id/opc_item2" android:title="Opción 2" android:icon="@drawable/marte" app:showAsAction="ifRoom"/>
+    <item android:id="@+id/opc_item3" android:title="Opción 3" android:icon="@drawable/marte">
+        <menu>
+            <item android:id="@+id/opc_itemSub1" android:title="Opción Sub 1" android:icon="@drawable/marte"/>
+            <item android:id="@+id/opc_itemSub2" android:title="Opción Sub 2" android:icon="@drawable/marte"/>
+        </menu>
+    </item>
+</menu>
