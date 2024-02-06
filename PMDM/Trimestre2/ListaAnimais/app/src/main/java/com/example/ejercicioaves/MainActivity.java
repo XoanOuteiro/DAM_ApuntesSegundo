@@ -1,9 +1,13 @@
 package com.example.ejercicioaves;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -32,8 +36,48 @@ public class MainActivity extends AppCompatActivity {
 
         lvAves.setAdapter(adapter);
 
+        registerForContextMenu(lvAves);
+
 
         listenerListView();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+
+        String origen = lvAves.getAdapter().getItem(info.position).toString();
+        menu.setHeaderTitle(origen);
+        inflater.inflate(R.menu.menu_context, menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.ctx_opc1:
+
+                createToast("Pulsada Opción 1");
+                break;
+
+            case R.id.ctx_opc2:
+
+                createToast("Pulsada Opción 2");
+                break;
+
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+    private void createToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     private void listenerListView() {
@@ -47,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 String nombre = tvNombre.getText().toString();
                 String info = tvInfo.getText().toString();
 
-                Toast.makeText(MainActivity.this, nombre + "\n" + info, Toast.LENGTH_SHORT).show();
+                createToast(nombre + "\n" + info);
 
             }
         });
