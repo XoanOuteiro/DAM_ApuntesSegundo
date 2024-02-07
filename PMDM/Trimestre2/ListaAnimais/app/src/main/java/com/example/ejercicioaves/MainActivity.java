@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private TypedArray arrayIdAves;
     private TypedArray arrayIdPuntos;
 
+    private AdaptadorPersonalizado adapter;
+    private int posicion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         finds();
 
-        AdaptadorPersonalizado adapter = new AdaptadorPersonalizado(this, R.layout.listview_aves_personalizado,
+        this.adapter = new AdaptadorPersonalizado(this, R.layout.listview_aves_personalizado,
                 getResources().getStringArray(R.array.nombreAves), arrayIdAves, getResources().getStringArray(R.array.infoAves),
                 arrayIdPuntos);
 
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
+        this.posicion = info.position;
+
         String origen = lvAves.getAdapter().getItem(info.position).toString();
         menu.setHeaderTitle(origen);
         inflater.inflate(R.menu.menu_context, menu);
@@ -63,7 +68,16 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.ctx_opc1:
 
-                createToast("Pulsada Opción 1");
+                createToast("Pulsada Eliminar");
+                //adapter.remove(adapter.getItem(this.posicion));
+
+                /*
+
+                    Si fuera un objeto como en planetas seria tan simple como adapter.remove(planeta);
+
+                 */
+
+                adapter.notifyDataSetChanged();
                 break;
 
             case R.id.ctx_opc2:
