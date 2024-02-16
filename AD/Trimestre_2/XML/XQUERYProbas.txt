@@ -1,0 +1,61 @@
+1. for $a in //titulo
+	return <titulo>{$a}</titulo>
+
+2. for $libro in //libro
+	order by $libro/@año
+	return <libro>
+    		{$libro/@año}
+    		{$libro/titulo}
+    	</libro>
+
+3. for $libro in //libro
+	where $libro/precio = 65.95
+	return <libro>
+    		{$libro/titulo}
+    	</libro>
+
+4. for $libro in //libro
+	where $libro/@año < 2000
+	return <libro>
+    		{$libro/titulo}
+    	</libro>
+
+5. for $libro in //libro
+	where $libro/@año > 1992 and $libro/editorial = 'Addison-Wesley'
+	return <libro>
+    		{$libro/titulo}
+    	</libro>
+
+6. for $libro in //libro
+	where count($libro/autor) > 1
+	return <libro>
+    		{$libro/titulo}
+    			<año>{xs:string($libro/@año)}</año>
+    	</libro>
+
+7. for $libro in //libro
+	where count($libro/autor) = 0
+	return <libro>
+    		{$libro/titulo}
+    		<año>{xs:string($libro/@año)}</año>
+    	</libro>
+
+8. distinct-values(
+	for $apellido in //libro/autor/apellido
+	where count($apellido) > 0
+	order by $apellido
+	return <apellidos>
+        	{$apellido}
+    	</apellidos>)
+
+9. for $libro in //libro
+	return <result>
+		{$libro/titulo}
+		{$libro/autor}
+	</result>
+
+10. for $libro in //libro
+	return <libro>
+		{$libro/titulo}
+		<numAutores>{count($libro/autor)}</numAutores>
+	</libro>
