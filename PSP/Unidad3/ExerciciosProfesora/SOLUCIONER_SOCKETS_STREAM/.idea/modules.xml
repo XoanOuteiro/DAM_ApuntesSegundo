@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_2/EJERCICIO3_2/Actividad3_2Cliente/Actividad3_2Cliente.iml" filepath="$PROJECT_DIR$/EJERCICIO3_2/EJERCICIO3_2/Actividad3_2Cliente/Actividad3_2Cliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_2/EJERCICIO3_2/Actividad3_2Servidor/Actividad3_2Servidor.iml" filepath="$PROJECT_DIR$/EJERCICIO3_2/EJERCICIO3_2/Actividad3_2Servidor/Actividad3_2Servidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_3/EJERCICIO3_3/Actividad3_3Cliente/Actividad3_3Cliente.iml" filepath="$PROJECT_DIR$/EJERCICIO3_3/EJERCICIO3_3/Actividad3_3Cliente/Actividad3_3Cliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_3/EJERCICIO3_3/Actividad3_3Servidor/Actividad3_3Servidor.iml" filepath="$PROJECT_DIR$/EJERCICIO3_3/EJERCICIO3_3/Actividad3_3Servidor/Actividad3_3Servidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_4/EJERCICIO3_4/Actividad3_4Cliente/Actividad3_4Cliente.iml" filepath="$PROJECT_DIR$/EJERCICIO3_4/EJERCICIO3_4/Actividad3_4Cliente/Actividad3_4Cliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_4/EJERCICIO3_4/Actividad3_4Servidor/Actividad3_4Servidor.iml" filepath="$PROJECT_DIR$/EJERCICIO3_4/EJERCICIO3_4/Actividad3_4Servidor/Actividad3_4Servidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO 3_5/Actividad3_5/Actividad3_5.iml" filepath="$PROJECT_DIR$/EJERCICIO 3_5/Actividad3_5/Actividad3_5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO 3_5/Actividad3_5Cliente/Actividad3_5Cliente.iml" filepath="$PROJECT_DIR$/EJERCICIO 3_5/Actividad3_5Cliente/Actividad3_5Cliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_6/Actividad3_6Cliente/Actividad3_6Cliente.iml" filepath="$PROJECT_DIR$/EJERCICIO3_6/Actividad3_6Cliente/Actividad3_6Cliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_6/Actividad3_6Servidor/Actividad3_6Servidor.iml" filepath="$PROJECT_DIR$/EJERCICIO3_6/Actividad3_6Servidor/Actividad3_6Servidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_8/Actividad3_8Hilocliente/Actividad3_8Hilocliente.iml" filepath="$PROJECT_DIR$/EJERCICIO3_8/Actividad3_8Hilocliente/Actividad3_8Hilocliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EJERCICIO3_8/Actividad3_8Servidor/Actividad3_8Servidor.iml" filepath="$PROJECT_DIR$/EJERCICIO3_8/Actividad3_8Servidor/Actividad3_8Servidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SOLUCIONER_SOCKETS_STREAM.iml" filepath="$PROJECT_DIR$/.idea/SOLUCIONER_SOCKETS_STREAM.iml" />
+    </modules>
+  </component>
+</project>
