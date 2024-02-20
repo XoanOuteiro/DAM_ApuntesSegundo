@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnDia_1;
@@ -16,7 +18,13 @@ public class MainActivity extends AppCompatActivity {
     private Button btnDia_3;
     private Button btnDia_4;
     private Button btnDia_5;
+    private Button btnDia_52;
     private Button btnDia_6;
+    private ArrayList<String> eleccionColores = new ArrayList<>();
+    private boolean[] arrayRes ;
+
+    private int selected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         this.btnDia_3 = findViewById(R.id.btnDia_3);
         this.btnDia_4 = findViewById(R.id.btnDia_4);
         this.btnDia_5 = findViewById(R.id.btnDia_5);
+        this.btnDia_52 = findViewById(R.id.btnDia_52);
         this.btnDia_6 = findViewById(R.id.btnDia_6);
 
     }
@@ -68,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnDia_5:
 
                 dialogo_lista_simple();
+
+                break;
+
+            case R.id.btnDia_52:
+
+                dialogo_lista_boton_ok();
 
                 break;
 
@@ -171,10 +186,10 @@ public class MainActivity extends AppCompatActivity {
         ventana.show();
     }
 
-    private void dialogo_lista_simple(){
+    private void dialogo_lista_simple() {
 
         AlertDialog.Builder ventana = new AlertDialog.Builder(this);
-                ventana.setIcon(R.drawable.jupiter)
+        ventana.setIcon(R.drawable.jupiter)
                 .setCancelable(false)
                 .setItems(R.array.colores, new DialogInterface.OnClickListener() {
                     @Override
@@ -188,10 +203,110 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void dialogo_checkbox(){
+    private void dialogo_lista_boton_ok() {
+
+        selected = 0;
+
+        AlertDialog.Builder ventana = new AlertDialog.Builder(this);
+        ventana.setIcon(R.drawable.jupiter)
+                .setCancelable(false)
+                .setSingleChoiceItems(R.array.colores, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        selected = which;
+
+                    }
+                })
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(MainActivity.this, getResources().getStringArray(R.array.colores)[selected], Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        ventana.show();
+
+    }
 
 
+    private void dialogo_checkbox() {
 
+        //this.eleccionColores.clear();       //Seria mejor con un array de booleans
+
+        this.arrayRes = new boolean[getResources().getStringArray(R.array.colores).length];
+
+        AlertDialog.Builder ventana = new AlertDialog.Builder(this);
+        ventana.setIcon(R.drawable.jupiter)
+                .setCancelable(false)
+                .setMultiChoiceItems(getResources().getStringArray(R.array.colores), null, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+/*                        if(isChecked){
+                            eleccionColores.add(getResources().getStringArray(R.array.colores)[which]);
+                        }else{
+                            eleccionColores.remove(getResources().getStringArray(R.array.colores)[which]);
+                        }*/
+
+                        arrayRes[which] = isChecked;
+
+                    }
+                })
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+/*                        String result = recorrerChecbox();
+
+                        Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();*/
+
+                        String result = getBooleanParse();
+                        Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        ventana.show();
+
+    }
+
+    private String getBooleanParse(){
+
+        String returnable = "Has seleccionado: ";
+
+        for(int i = 0; i < this.arrayRes.length; i++){
+
+            if(this.arrayRes[i]){
+
+                returnable = returnable.concat("\n"+getResources().getStringArray(R.array.colores)[i]);
+
+            }
+        }
+        return returnable;
+    }
+
+    private void resetToFalse(){
+
+        for(boolean b : this.arrayRes){
+
+            b = false;
+
+        }
+
+    }
+
+    private String recorrerChecbox(){
+
+        String returnable = "Has seleccionado: ";
+
+        for (String s: this.eleccionColores) {
+
+            returnable = returnable.concat("\n"+s );
+
+        }
+
+        return returnable;
 
     }
 }

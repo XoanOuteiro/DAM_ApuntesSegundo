@@ -44,6 +44,13 @@
         android:onClick="onClickBtnDia"/>
 
     <Button
+        android:id="@+id/btnDia_52"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Btn Dia 5.2"
+        android:onClick="onClickBtnDia"/>
+
+    <Button
         android:id="@+id/btnDia_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
