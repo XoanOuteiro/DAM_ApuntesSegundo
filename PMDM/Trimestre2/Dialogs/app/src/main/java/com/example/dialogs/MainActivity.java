@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -116,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         //TODO operaciones pertinentes
-                        dialog.cancel();
+                        Toast t = Toast.makeText(MainActivity.this,"Pulsado OK",Toast.LENGTH_SHORT);
+                        t.setGravity(Gravity.TOP, 0,0);
+                        t.show();
 
                     }
                 });
@@ -134,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         //TODO operaciones pertinentes
-                        Toast.makeText(MainActivity.this, "Pulsaste OK!", Toast.LENGTH_SHORT).show();
+                        customToast();
 
                     }
                 })
@@ -307,6 +313,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return returnable;
+
+    }
+
+    private void customToast(){
+
+        LinearLayout toast = findViewById(R.id.ll_toast);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_personalizada,toast);
+        TextView txtv = view.findViewById(R.id.txt_mensaje_toast);
+        txtv.setText("Hola mundo");
+        Toast toastF = new Toast(this);
+        toastF.setDuration(Toast.LENGTH_SHORT);
+        toastF.setGravity(Gravity.TOP,0,0);
+        toastF.setView(view);
+        toastF.show();
 
     }
 }
