@@ -3,7 +3,14 @@ package com.example.dialogs;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +24,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static int NOTIFICACION_1 = 1;
+
     private Button btnDia_1;
     private Button btnDia_2;
     private Button btnDia_3;
@@ -24,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnDia_5;
     private Button btnDia_52;
     private Button btnDia_6;
+    private Button btnNotif_1;
+    private Button btnAct_2;
     private ArrayList<String> eleccionColores = new ArrayList<>();
     private boolean[] arrayRes ;
 
@@ -47,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         this.btnDia_5 = findViewById(R.id.btnDia_5);
         this.btnDia_52 = findViewById(R.id.btnDia_52);
         this.btnDia_6 = findViewById(R.id.btnDia_6);
+        this.btnNotif_1 = findViewById(R.id.btnNotif_1);
+        this.btnAct_2 = findViewById(R.id.btnAct_2);
 
     }
 
@@ -93,6 +106,20 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnDia_6:
 
                 dialogo_checkbox();
+
+                break;
+
+
+            case R.id.btnNotif_1:
+
+                notificacion();
+
+                break;
+
+
+            case R.id.btnAct_2:
+
+                notificacionActivity();
 
                 break;
 
@@ -328,6 +355,52 @@ public class MainActivity extends AppCompatActivity {
         toastF.setGravity(Gravity.TOP,0,0);
         toastF.setView(view);
         toastF.show();
+
+    }
+
+    private void notificacion(){
+
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.jupiter);
+
+            Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.jupiter)
+                .setTicker("Soy el mensaje opcional")
+                .setContentTitle("Titulo notificación")
+                .setContentText("Contenido...")
+                .setLargeIcon(largeIcon);
+
+        Intent intent = new Intent();
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_IMMUTABLE);
+
+        builder.setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = builder.build();
+
+        notificationManager.notify(NOTIFICACION_1,notification);
+    }
+
+    private void notificacionActivity(){
+
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.jupiter);
+
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.jupiter)
+                .setTicker("Soy el mensaje opcional")
+                .setContentTitle("Titulo notificación")
+                .setContentText("Contenido...")
+                .setLargeIcon(largeIcon);
+
+        Intent intent = new Intent(this, Activity_2.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_IMMUTABLE);
+
+        builder.setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = builder.build();
+
+        notificationManager.notify(NOTIFICACION_1,notification);
+
 
     }
 }
