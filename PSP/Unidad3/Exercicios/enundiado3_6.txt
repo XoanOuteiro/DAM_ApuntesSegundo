@@ -1,0 +1,1 @@
+Ejercicio: Modificar el ejercicio 3_6 de manera que el hilo primario servidor quiere tener por cada hilo que lanza con quien ha estado conectado y cuanto tiempo a estado conectado
