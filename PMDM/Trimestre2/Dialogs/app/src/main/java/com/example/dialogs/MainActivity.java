@@ -389,6 +389,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTicker("Soy el mensaje opcional")
                 .setContentTitle("Titulo notificación")
                 .setContentText("Contenido...")
+                .setStyle(new Notification.BigTextStyle().bigText("Texto multilinea de muchas y multiples lineas"))
                 .setLargeIcon(largeIcon);
 
         Intent intent = new Intent(this, Activity_2.class);
