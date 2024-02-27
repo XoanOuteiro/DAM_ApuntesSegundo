@@ -23,10 +23,10 @@
         android:onClick="onClickBtn"/>
 
     <Button
-        android:id="@+id/btn_Reset"
+        android:id="@+id/btn_Modificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
+        android:text="Modificar"
         android:onClick="onClickBtn"/>
 
     <Button
