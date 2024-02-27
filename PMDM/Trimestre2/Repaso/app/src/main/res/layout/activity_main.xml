@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:text="ALUMNOS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSpinners"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">   <!-- Ambos Spinners -->
+        <LinearLayout
+            android:id="@+id/llSpCurso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >                                        <!-- Spinner Curso -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Curso"/>
+
+            <Spinner
+                android:id="@+id/spCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/CURSOS"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSpCiclo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >                                        <!-- Spinner Ciclo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ciclo"/>
+
+            <Spinner
+                android:id="@+id/spCiclo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/CICLOS"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llInputAndBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">    <!-- Texto Input y botón -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">   <!-- Solo texto input -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alumno: "/>
+
+            <EditText
+                android:id="@+id/txtAlumno"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Nombre y apellidos ..."/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"/>
+
+    </LinearLayout>
+
+    <!-- Fin de layouts -->
+
+    <ListView
+        android:id="@+id/lvAlumnos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

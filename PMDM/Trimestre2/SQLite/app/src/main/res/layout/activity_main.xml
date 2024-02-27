@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Operaciones sobre BD simple"
+        android:onClick="onClickBtn"/>
+
+    <Button
+        android:id="@+id/btn_Guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:onClick="onClickBtn"/>
+
+    <Button
+        android:id="@+id/btn_Reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:onClick="onClickBtn"/>
+
+    <Button
+        android:id="@+id/btn_Eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        android:onClick="onClickBtn"/>
+
+    <Button
+        android:id="@+id/btn_Consulta1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consulta 1"
+        android:onClick="onClickBtn"/>
+
+    <Button
+        android:id="@+id/btn_Consulta2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consulta 2"
+        android:onClick="onClickBtn"/>
+
+</LinearLayout>
