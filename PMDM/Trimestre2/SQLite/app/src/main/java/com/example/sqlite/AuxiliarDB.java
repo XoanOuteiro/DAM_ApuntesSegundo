@@ -12,6 +12,8 @@ import java.util.Collections;
 
 public class AuxiliarDB extends SQLiteOpenHelper {
 
+    private String strCreateTable = "Create table usuarios(codigo int primary key, nombre varchar(25))";
+
     private Context ctx;
 
     public AuxiliarDB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -22,8 +24,9 @@ public class AuxiliarDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(strCreateTable);
         try {
-            db.execSQL("Create table usuarios(codigo int primary key, nombre varchar(25))");
+            db.execSQL("INSERT INTO usuarios (codigo, nombre) values (1,'perez perez')");
         } catch (Exception ex) {
             Toast.makeText(ctx, ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
         }
