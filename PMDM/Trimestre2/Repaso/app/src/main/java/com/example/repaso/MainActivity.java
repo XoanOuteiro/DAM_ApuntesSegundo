@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     /*
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         ---Atributos dinamicos de lista
 
      */
+    private AdaptadorCustomAlumnos adaptador;
+    private ArrayList<Alumno> alumnos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,17 @@ public class MainActivity extends AppCompatActivity {
         // Cambiar ll de spCiclo a no visible hasta que curso == ciclo
         this.llspCiclo.setVisibility(View.GONE);
 
+        //Asociar adaptador personalizado
+        this.alumnos = new ArrayList<>();
+        this.adaptador = new AdaptadorCustomAlumnos(this,
+                R.layout.listview_custom_alumnos,
+                alumnos);
+        this.lvAlumnos.setAdapter(adaptador);
+
         listenerSpCurso();
+        listenerSpCiclo();
+        listenerBtnGuardar();
+        listenerItemsListView();
 
     }
 
@@ -98,6 +112,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void listenerItemsListView(){
+        this.lvAlumnos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String nombre = alumnos.get(position).getNombre();
+                String curso = alumnos.get(position).getCurso();
+                String ciclo = alumnos.get(position).getCiclo();
+
+                if(ciclo == null) {
+                    Toast.makeText(MainActivity.this, "Alumno: " + nombre + "\nCurso: " + curso, Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "Alumno: " + nombre + "\nCurso: " + curso + "\nCiclo: " + ciclo, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
     private void listenerSpCiclo(){
         this.spCiclo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -114,6 +147,40 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void listenerBtnGuardar(){
+        this.btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nombre = txtAlumno.getText().toString();
+                //cursoSeleccionado
+                //cicloSeleccionado
+
+                Alumno alumno;
+
+                if(cicloSeleccionado == null){
+                    alumno = new Alumno(nombre,cursoSeleccionado);
+
+                }else{
+                    alumno = new Alumno(nombre,cursoSeleccionado,cicloSeleccionado);
+
+                }
+
+                alumnos.add(alumno);
+                //toastAlumnos();
+                adaptador.notifyDataSetChanged();
+                txtAlumno.setText("");
+                //Toast.makeText(MainActivity.this, "Creado alumno " + nombre, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void toastAlumnos(){
+        for (Alumno al : this.alumnos){
+            Toast.makeText(this, al.getNombre() + " " + al.getCurso() + " " + al.getCiclo(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void fetchElements(){
 
         this.btnGuardar = findViewById(R.id.btnGuardar);
@@ -126,6 +193,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void comprobarSeleccionCurso(){
+
+        //Reiniciar ciclo seleccionado
+        this.cicloSeleccionado = null;
 
         if (cursoSeleccionado.equals("Ciclo")){
 

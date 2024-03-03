@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iconAlumno"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:textAllCaps="true"
+            android:textColor="#00f"
+            android:textStyle="bold"
+            android:text="Alumno nombre"
+            android:id="@+id/txtNombreAlumno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/> <!-- Center in parent va horrible con relative layout y destroza los paddings -->
+
+        <TextView
+            android:id="@+id/txtCurso"
+            android:text="Curso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNombreAlumno"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/txtCiclo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ciclo"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txtCurso"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
