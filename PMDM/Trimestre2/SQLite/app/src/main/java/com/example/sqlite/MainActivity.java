@@ -3,6 +3,7 @@ package com.example.sqlite;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -162,6 +163,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 cursorParametrizadoVarios.close();
+                break;
+
+
+            case R.id.btnMostrarListView:
+
+
                 break;
 
 

@@ -8,53 +8,46 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/txt"
+    <Button
+        android:id="@+id/btnInsertar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Operaciones sobre BD simple"
+        android:text="Insertar"
         android:onClick="onClickBtn"/>
 
     <Button
-        android:id="@+id/btn_Guardar"
+        android:id="@+id/btnBorrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
+        android:text="Borrar"
         android:onClick="onClickBtn"/>
 
     <Button
-        android:id="@+id/btn_Modificar"
+        android:id="@+id/btnModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modificar"
+        android:text="Modifica"
         android:onClick="onClickBtn"/>
 
     <Button
-        android:id="@+id/btn_Eliminar"
+        android:id="@+id/btnMuestrauno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eliminar"
+        android:text="Muestra Uno"
         android:onClick="onClickBtn"/>
 
     <Button
-        android:id="@+id/btn_Consulta1"
+        android:id="@+id/btnMuestravarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consulta 1"
+        android:text="Muestra Varios"
         android:onClick="onClickBtn"/>
 
     <Button
-        android:id="@+id/btn_Consulta2"
+        android:id="@+id/btnMuestraLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consulta 2"
+        android:text="Mostrar List View"
         android:onClick="onClickBtn"/>
-
-    <Button
-        android:id="@+id/btnMostrarListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickBtn"
-        android:text="Mostrar en List View"/>
 
 </LinearLayout>
