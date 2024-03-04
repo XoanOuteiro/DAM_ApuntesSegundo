@@ -44,6 +44,9 @@ public class AdaptadorCustomAlumnos extends ArrayAdapter {
 
         ImageView icon = fila.findViewById(R.id.iconAlumno);
 
+        //activity.registerForContextMenu(txtNombre);
+        //activity.registerForContextMenu(icon);
+
         //Seteamos los valores per fila
         txtNombre.setText(this.alumnos.get(position).getNombre());
         txtCurso.setText(this.alumnos.get(position).getCurso());

@@ -1,8 +1,13 @@
 package com.example.repaso;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private AdaptadorCustomAlumnos adaptador;
     private ArrayList<Alumno> alumnos;
+    private Alumno selectedAlumno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,12 +91,66 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.listview_custom_alumnos,
                 alumnos);
         this.lvAlumnos.setAdapter(adaptador);
+        registerForContextMenu(this.lvAlumnos);
 
         listenerSpCurso();
         listenerSpCiclo();
         listenerBtnGuardar();
         listenerItemsListView();
 
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        switch(v.getId()){
+
+            case R.id.lvAlumnos:
+
+                MenuInflater inflater = getMenuInflater();
+
+                String nombre = "";
+
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+
+                try{
+
+                    this.selectedAlumno = (Alumno) lvAlumnos.getAdapter().getItem(info.position);
+                    nombre = this.selectedAlumno.getNombre();
+
+                }catch(Exception ex){
+                    Toast.makeText(this, "Error: " + ex, Toast.LENGTH_SHORT).show();
+                }
+
+                menu.setHeaderTitle(nombre);
+                inflater.inflate(R.menu.custom_menu, menu);
+
+                break;
+
+
+        }
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        
+        switch(item.getItemId()){
+            
+            case R.id.ctx_Eliminar:
+                this.alumnos.remove(this.selectedAlumno);
+                this.adaptador.notifyDataSetChanged();
+                break;
+                
+            case R.id.ctx_Otras:
+                Toast.makeText(this, "Pulsado otras ...", Toast.LENGTH_SHORT).show();
+                break;
+            
+        }
+        
+        return super.onContextItemSelected(item);
     }
 
     private void listenerSpCurso() {
