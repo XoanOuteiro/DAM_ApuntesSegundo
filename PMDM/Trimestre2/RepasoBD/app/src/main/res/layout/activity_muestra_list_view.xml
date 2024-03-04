@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Activity_MuestraListView"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:padding="20dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,6 +17,8 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lvMostrar" />
+        android:id="@+id/lvMostrar"
+        android:divider="#f00"
+        android:dividerHeight="10px"/>
 
 </LinearLayout>

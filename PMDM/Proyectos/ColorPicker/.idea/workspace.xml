@@ -10,8 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07988b2c-a15b-477e-b9d2-8ababf892afc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../PSP/Unidad1/Exemplos_profesora/ejemplo2/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/Unidad1/Exemplos_profesora/ejemplo2/nbproject/private/private.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../PSP/Unidad1/Exemplos_profesora/ejemplo2/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/Unidad1/Exemplos_profesora/ejemplo2/nbproject/private/private.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/java/com/example/repasobd/CustomAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/res/layout/custom_list_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/ProyectoPreExamen-SinActualizarIDE/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/ProyectoPreExamen-SinActualizarIDE/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/ProyectoPreExamen-SinActualizarIDE/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/ProyectoPreExamen-SinActualizarIDE/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/Repaso/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/Repaso/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/java/com/example/repasobd/Activity_MuestraListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/java/com/example/repasobd/Activity_MuestraListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/java/com/example/repasobd/Activity_MuestraVarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/java/com/example/repasobd/Activity_MuestraVarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/res/layout/activity_muestra_list_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/res/layout/activity_muestra_list_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/res/layout/activity_muestra_varios.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Trimestre2/RepasoBD/app/src/main/res/layout/activity_muestra_varios.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +94,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/xoano/Desktop/Clase/DAM_ApuntesSegundo/PMDM/Trimestre1/Examenes/PrimerTrimestre/2023_XoanManuelOteroJorge",
+    "last_opened_file_path": "C:/Users/xoano/Desktop/Clase/DAM_ApuntesSegundo/PMDM/Proyectos/ColorPicker",
     "settings.editor.selected.configurable": "emulator"
   }
 }]]></component>
